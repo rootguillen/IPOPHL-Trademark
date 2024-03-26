@@ -1,0 +1,74 @@
+﻿body {
+    padding: 2px;
+    font-family: 'Century Gothic';
+}
+
+.title-tm {
+    font-size: 16px;
+    font-weight: bold;
+    text-align:center;
+}
+
+.card-body-tm {
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,0), 0 0 6px rgba(0,0,0,0);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+    font-size: 22px;
+    align-content: center;
+    text-align: center;
+}
+    .card-body-tm:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0), 0 4px 8px rgba(0,0,0,0);
+        background: #ffe1ca;
+    }
+    .card-body-tm{
+
+    }//selected
+
+.card-tle {
+    font-size: 11px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.card-txt {
+    font-size: 10px
+}
+
+.img-tm {
+    width: 50px;
+    height: auto;
+}
+
+.control_wrapper {
+    font-family: 'Century Gothic';
+    font-size: 11px;
+    height: 66px;
+}
+
+.form-txt {
+    font-size: 11px;
+}  
+
+    .icon-bttn-o {
+        color: #ed6b30;
+        width: 25px;
+        height: auto;
+    }
+    .icon-bttn-g {
+        color: #a4acac;
+        font-size: 10px;
+        width: 25px;
+        height: auto;
+    }
+
+
+.nationality-select {
+    font-family: 'Century Gothic';
+    font-size: 11px;
+    height: 66px;
+    width: auto;
+}
