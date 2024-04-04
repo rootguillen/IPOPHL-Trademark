@@ -1,19 +1,21 @@
 ﻿body {
-    padding: 2px;
-    font-family: 'Century Gothic';
+    padding: 1.667rem;
+    font-family: 'Copperplate Gothic';
+    font-size: 12px;
 }
-
+.row{
+    margin-top: 0.833rem;
+}
 .card {
     border-radius: 4px;
     background: #fff;
-    height: 100px;
+    height: 250px;
     width: auto;
     box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,0);
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     cursor: pointer;
-    font-size: 22px;
-    align-content:center;
-    text-align: center;
+    text-align: left;
+    padding: 0.833rem;
 }
     .card:hover {
         transform: scale(1.05);
@@ -25,4 +27,25 @@
     background-repeat: no-repeat;
     background-position: top;
     background-size: 80px;
+}
+
+.about-page-bttn {
+    width: 16.667rem;
+    background-color: #ed6b30;
+    color: #fff;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-right: 3rem;
+}
+.description {
+    font-size: 1rem;
+}
+
+.img-left-bttn {
+    width:auto;
+    height: 4.167rem;
+    margin-top: 50px;
 }

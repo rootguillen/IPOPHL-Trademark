@@ -7,148 +7,130 @@
 @using System.Globalization;
 @using System.IO;
 
-
-<div class="row">
-    <div class="container m-5">
-        <div class="row">
-            <div class="col m-5" >
-                <div class="card card-tm-rf row" style="width:600px" >
-                    <div class="offset-2 fw-bold mt-3">TRADEMARK</div>
-                    <div class="offset-2 mt-2 tm-desc">
-                        A trademark is a recognizable sign, design
-                    </div>
-                    <button class="btn custom-btn mt-5 offset-2 mt-4" style="width:200px">About the page</button>
+<div class="container">
+    <div class="row">
+        <div class="col-7">
+            <div class="card tm-main-about">
+                <div class="title">TRADEMARK</div>
+                <div class="description">
+                    This section is for its description. Kindly edit.
                 </div>
+                <button class="btn about-page-bttn">About the Trademark</button>
             </div>
-            <div class="col m-5 p-0">
-                <div class="card card-tm row title-form fw-bold pt-4" To="trademark-Registration-form">
-                    <div>REGISTRATION <br />
-                        FORM<br />
-                        <br />
-                    </div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
-                </div>
-            </div>
-            <div class="col m-5">
-                <div class="card card-tm row title-form fw-bold pt-4">
-                    <div> DECLARATION<br />
-                        OF<br />
-                        ACTUAL USE</div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
+        </div>
+        <div class="col-5">
+            <div class="card tm-forms">
+                <div class="title">REGISTRATION FORM</div>
+                <div class="col-2">
+                    <img class="img-left-bttn" 
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy"/>
                 </div>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col m-5 ">
-                <div class="card card-tm-rf row title-form fw-bold pt-4">
-                    <a href="/Pages/RegistrationForm.razor"></a>
-                    <div>REQUEST <br />
-                        FOR <br />
-                        RENEWAL
-                    </div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
-                </div>
-            </div>
-            <div class="col m-5">
-                <div class="card card-tm row title-form fw-bold pt-4" To="trademark-Registration-form">
-                    <div>REQUEST FOR REVIVAL IN PUBLICATION</div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
-                </div>
-            </div>
-            <div class="col m-5">
-                <div class="card card-tm row title-form fw-bold pt-4">
-                    <div>REQUEST FOR REVIVAL IN EXAMINATION</div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
-                </div>
-            </div>
-            <div class="col m-5">
-                <div class="card card-tm row title-form fw-bold pt-4">
-                    <div>REQUEST <br /> 
-                        FOR <br />
-                        PRIORITY EXAM
-                    </div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
+    </div>
+    <div class="row">
+        <div class="col-4 ">
+            <div class="card tm-forms">
+                <div class="title">DECLARATION OF USE</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button"
+                         loading="lazy" />
                 </div>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col m-5">
-                <div class="card card-tm-rf row title-form fw-bold pt-4">
-                    <a href="/Pages/RegistrationForm.razor"></a>
-                    <div>REQUEST FOR SUSPENSION OF ACTION</div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">REQUEST FOR RENEWAL</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
                 </div>
             </div>
-            <div class="col m-5">
-                <div class="card card-tm row title-form fw-bold pt-4" To="trademark-registration-form">
-                    <div>EXTENSION OF <br />
-                        TIME TO FILE <br />
-                        RESPONSE
-                    </div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>    
-                    
+        </div>
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">REQUEST FOR REVIVAL IN PUBLICATION</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
                 </div>
             </div>
-            <div class="col m-5">
-                <div class="card card-tm row title-form fw-bold pt-4">
-                    <div>ASSIGNMENT OF APPLICATION FOR REGISTRATION OF TM</div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">REQUEST FOR REVIVAL IN EXAMINATION</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
                 </div>
             </div>
-            <div class="col m-5">
-                <div class="card card-tm row title-form fw-bold pt-4">
-                    <div>ASSIGNMENT OF REGISTERED TRADEMARK</div>
-                    <div class="col-2 img-left-bttn offset-8 mt-5">
-                        <img class="img-left-bttn"
-                             src="left.png"
-                             alt="left-button"
-                             loading="lazy" />
-                    </div>
+        </div>
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">REQUEST FOR PRIOERITY EXAM</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">REQUEST FOR SUSPENSION OF ACTION</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">EXTENSION OF TIME TO FILE RESPONSE</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">ASSIGNMENT OF APPLICATION FOR REGISTRATION OF TM</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card tm-forms">
+                <div class="title">ASSIGNMENT OF REGISTERED TRADEMARK</div>
+                <div class="col-2">
+                    <img class="img-left-bttn"
+                         src="left.png"
+                         alt="left-button-arrow"
+                         loading="lazy" />
                 </div>
             </div>
         </div>
