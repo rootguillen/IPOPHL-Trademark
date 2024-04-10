@@ -14,11 +14,12 @@
 <EditForm Model="@trademarkModel" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     
-    <div class="title-tm">
-            TRADEMARK APPLICATION - IPOPHL Form 400
+    <div class="row">
+        <div class="title-tm">
+                TRADEMARK APPLICATION - IPOPHL Form 400
+        </div>
     </div>
-
-    <div class="card p-5">
+    <div class="row mt-3">
         <div class="row icon-forms d-flex text-wrap">
             <div class="col-3 justify-content-center text-center text-wrap">
                 <button type="button" @onclick="InfoTrademark" class="btn btn-light form-txt shadow p-3 mb-5 bg-white rounded">
@@ -46,13 +47,13 @@
             </div>
         </div>
     </div>
-    <div class="p-2">
+    <div class="mt-1">
     </div>
         @if (infoTrademark)
         {
             //type of mark
-            <div class="card p-5">
-                <div class="tm-application-tle">TRADEMARK INFORMATION jsdvjwencjwncjwncwnc</div>
+            <div class="card m-1">
+                <div class="tm-application-tle">TRADEMARK INFORMATION</div>
                 <div class="row card-type-tm pt-2 d-flex justify-content-center text-center">
                     <div class="card-group-tle">Type of Mark</div>
                     <div class="card-group-subtxt fst-italic">

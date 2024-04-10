@@ -1,6 +1,11 @@
 ﻿body {
     padding: 2px;
     font-family: 'Century Gothic';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .title-tm {
@@ -24,9 +29,6 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0), 0 4px 8px rgba(0,0,0,0);
         background: #ffe1ca;
     }
-    .card-body-tm{
-
-    }//selected
 
 .card-tle {
     font-size: 11px;
