@@ -5,7 +5,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+}
+
+.btn.active {
+    background-color: #ed6b30 !important;
+    color: white !important;
 }
 
 .title-tm {
@@ -14,34 +18,16 @@
     text-align:center;
 }
 
-.button-marktype {
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,0), 0 0 6px rgba(0,0,0,0);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    cursor: pointer;
-    font-size: 22px;
-    align-content: center;
-    text-align: center;
-}
-
-    .button-marktype:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0,0,0,0), 0 4px 8px rgba(0,0,0,0);
-        background: #ffe1ca;
-    }
-.selected {
-    background-color: #f8d7da;
-}
-
 .card-tle {
     font-size: 11px;
     font-style: oblique;
     font-weight: bold;
+    text-align: center;
 }
 
 .card-txt {
-    font-size: 10px
+    font-size: 10px;
+    text-align: center;
 }
 
 .img-tm {
@@ -71,10 +57,56 @@
         height: auto;
     }
 
-
 .nationality-select {
     font-family: 'Century Gothic';
     font-size: 11px;
     height: 66px;
     width: auto;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.btn-dark {
+    background-color: #F6995C !important;
+    color: #000000 !important;
+}
+
+.btn-light {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+
+
+.card-img img {
+    width: 50px;
+    height: auto;
+}
+
+.card-tle {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.card-txt {
+    color: #666666;
+    margin-top: 5px;
+}
+
+.card-type-tm {
+    margin-top: 20px;
+}
+
+.card-group-tle {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card-group-subtxt {
+    margin-top: 10px;
 }

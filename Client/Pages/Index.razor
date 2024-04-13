@@ -44,30 +44,28 @@
                     By submitting your application or request to us, manually or electronically, you signify your agreement to the collection, use, disclosure and processing of your personal data for legitimate purposes and in accordance with our mandate.
                 </div>
                 <div class="modal-footer">
-                    <button class="btn closemodal" data-bs-dismiss="modal" @onclick="CloseConsentModal">I don't agree</button>
-                    <button class="btn consentyesmodal" data-bs-toggle="modal" data-bs-target="#disclaimerModal">I agree</button>
+                    <button class="btn closemodal" data-bs-dismiss="modal" @onclick="CloseModal">I don't agree</button>
+                    <button class="btn consentyesmodal" data-bs-target="#disclaimersignatureModal" data-bs-toggle="modal">I agree</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal " id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
+    <div class="modal fade" id="disclaimersignatureModal" tabindex="-1" aria-labelledby="disclaimersignatureModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="disclaimerModal">Disclaimer and Signature</h1>
+                    <h1 class="modal-title fs-5" id="disclaimersignatureModal">Disclaimer and Signature</h1>
                     <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     I certify under pain of perjury that all information I have indicated herein are true and correct to the best of my knowledge and belief, and that my signature appearing herein is genuine and authentic. I likewise understand that the processing of this application is subject to pertinent provisions of the implementing rules and regulations of the IPO Philippines.
                 </div>
                 <div class="modal-footer">
-                    <button class="btn closemodal" data-bs-dismiss="modal">I don't accept</button>
                     <button class="btn consentyesmodal" @onclick="HandleConsentYes">I accept</button>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-4 ">
             <div class="card tm-forms">
@@ -191,10 +189,6 @@
     {
         await JSRuntime.InvokeVoidAsync("showConsentModal");
     }
-    private async Task OpenDisclaimerModal()
-    {
-        await JSRuntime.InvokeVoidAsync("showDisclaimerModal");
-    }
 }
 
 <script>
@@ -204,12 +198,12 @@
     };
 
     window.closeConsentModal = function () {
-        var modal = document.getElementById('consentModal');
+        var modal = document.getElementById('disclaimersignatureModal');
         modal.style.display = 'none';
     };
 
     window.closeDisclaimerModal = function () {
-        var modal = document.getElementById('disclaimerModal');
+        var modal = document.getElementById('disclaimersignatureModal');
         modal.style.display = 'none';
     };
 
@@ -224,13 +218,8 @@
         await JSRuntime.InvokeVoidAsync("handleConsentYes");
     }
 
-    private async Task CloseConsentModal()
+    private async Task CloseModal()
     {
         await JSRuntime.InvokeVoidAsync("closeConsentModal");
-    }
-
-    private async Task CloseDisclaimerModal()
-    {
-        await JSRuntime.InvokeVoidAsync("closeDisclaimerModal");
     }
 }
