@@ -1,5 +1,5 @@
 ﻿body {
-    padding: 2px;
+    padding: 5px;
     font-family: 'Century Gothic';
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@
     text-align:center;
 }
 
-.card-body-tm {
+.button-marktype {
     border-radius: 4px;
     background: #fff;
     box-shadow: 0 6px 10px rgba(0,0,0,0), 0 0 6px rgba(0,0,0,0);
@@ -24,11 +24,15 @@
     align-content: center;
     text-align: center;
 }
-    .card-body-tm:hover {
+
+    .button-marktype:hover {
         transform: scale(1.05);
         box-shadow: 0 10px 20px rgba(0,0,0,0), 0 4px 8px rgba(0,0,0,0);
         background: #ffe1ca;
     }
+.selected {
+    background-color: #f8d7da;
+}
 
 .card-tle {
     font-size: 11px;

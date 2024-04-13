@@ -6,20 +6,23 @@
 @using System.Collections.Generic;
 @using System.Globalization;
 @using System.IO;
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
 
 <div class="container">
     <div class="row">
         <div class="col-7">
-            <div class="card tm-main-about">
-                <div class="title">TRADEMARK</div>
+            <div class="card tm-main-about" @onclick="toIPOPHLTrademarkPage">
+                <div class="title">TRADEMARK ™®©</div>
                 <div class="description">
                     This section is for its description. Kindly edit.
                 </div>
-                <button class="btn about-page-bttn">About the Trademark</button>
+                <button class="btn about-page-bttn">Learn More</button>
             </div>
         </div>
         <div class="col-5">
-            <div class="card tm-forms">
+            <div class="card tm-forms" data-bs-toggle="modal" data-bs-target="#consentModal" @onclick="OpenConsentModal">
                 <div class="title">REGISTRATION FORM</div>
                 <div class="col-2">
                     <img class="img-left-bttn"
@@ -30,6 +33,41 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="consentModal" tabindex="-1" aria-labelledby="consentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="consentModal">IPOPHL Privacy Statement</h1>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    By submitting your application or request to us, manually or electronically, you signify your agreement to the collection, use, disclosure and processing of your personal data for legitimate purposes and in accordance with our mandate.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn closemodal" data-bs-dismiss="modal" @onclick="CloseConsentModal">I don't agree</button>
+                    <button class="btn consentyesmodal" data-bs-toggle="modal" data-bs-target="#disclaimerModal">I agree</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal " id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="disclaimerModal">Disclaimer and Signature</h1>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    I certify under pain of perjury that all information I have indicated herein are true and correct to the best of my knowledge and belief, and that my signature appearing herein is genuine and authentic. I likewise understand that the processing of this application is subject to pertinent provisions of the implementing rules and regulations of the IPO Philippines.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn closemodal" data-bs-dismiss="modal">I don't accept</button>
+                    <button class="btn consentyesmodal" @onclick="HandleConsentYes">I accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-4 ">
             <div class="card tm-forms">
@@ -56,7 +94,7 @@
         <div class="col-4">
             <div class="card tm-forms">
                 <div class="title">REQUEST FOR REVIVAL IN PUBLICATION</div>
-                <div class="col-2">
+                <div class="col-2 button-marktype ">
                     <img class="img-left-bttn"
                          src="left.png"
                          alt="left-button-arrow"
@@ -136,3 +174,63 @@
         </div>
     </div>
 </div>
+
+@code {
+
+    private async Task RedirectToExternalUrl(string url)
+    {
+        await JSRuntime.InvokeVoidAsync("window.open", url, "_blank");
+    }
+    private async Task toIPOPHLTrademarkPage()
+    {
+        string externalUrl = "https://www.ipophil.gov.ph/trademark/";
+        await RedirectToExternalUrl(externalUrl);
+    }
+
+    private async Task OpenConsentModal()
+    {
+        await JSRuntime.InvokeVoidAsync("showConsentModal");
+    }
+    private async Task OpenDisclaimerModal()
+    {
+        await JSRuntime.InvokeVoidAsync("showDisclaimerModal");
+    }
+}
+
+<script>
+    window.showConsentModal = function () {
+        var modal = document.getElementById('consentModal');
+        modal.style.display = 'block';
+    };
+
+    window.closeConsentModal = function () {
+        var modal = document.getElementById('consentModal');
+        modal.style.display = 'none';
+    };
+
+    window.closeDisclaimerModal = function () {
+        var modal = document.getElementById('disclaimerModal');
+        modal.style.display = 'none';
+    };
+
+    window.handleConsentYes = function () {
+        window.location.href = 'trademark-registration-form';
+    };
+</script>
+
+@code {
+    private async Task HandleConsentYes()
+    {
+        await JSRuntime.InvokeVoidAsync("handleConsentYes");
+    }
+
+    private async Task CloseConsentModal()
+    {
+        await JSRuntime.InvokeVoidAsync("closeConsentModal");
+    }
+
+    private async Task CloseDisclaimerModal()
+    {
+        await JSRuntime.InvokeVoidAsync("closeDisclaimerModal");
+    }
+}

@@ -7,6 +7,8 @@
 @using System.ComponentModel.DataAnnotations;
 @using System.Collections.Generic;
 @using System.Threading.Tasks;
+@inject NavigationManager toTrademarkRegistrationForm
+
 
 
 <PageTitle>Trademark - Trademark Application</PageTitle>
@@ -52,16 +54,16 @@
         @if (infoTrademark)
         {
             //type of mark
-            <div class="card m-1">
-                <div class="tm-application-tle">TRADEMARK INFORMATION</div>
+            <div class="card p-1">
+                <div class="title-tm">TRADEMARK INFORMATION</div>
                 <div class="row card-type-tm pt-2 d-flex justify-content-center text-center">
                     <div class="card-group-tle">Type of Mark</div>
                     <div class="card-group-subtxt fst-italic">
                         Kindly specify what type of Mark are you applying for:
                     </div>
                     <div class="col-2 pt-2">
-                        <div class="card" @onclick="() => SelectMarkType(MarkType.Word)">
-                            <div class="card-body card-body-tm">
+                    <div class="btn btn-light button-marktype shadow p-3 mb-5 bg-white" @onclick="() => SelectMarkType(MarkType.Word)">
+                        <div class="row">
                                 <div class="card-img">
                                     <img class="img-tm cbd-tm-1 d-inline-block align-text-top"
                                          src="regisForm-img/tm-wm.png"
@@ -70,64 +72,64 @@
                                          width: 50px
                                          height: auto />
                                 </div>
-                                <div class="card-title card-tle">Word Mark</div>
-                                <p class="card-text card-txt">A word mark is a type of trademark that consists solely of words, letters, or numbers, without any design elements or stylization</p>
+                                <div class="row card-tle">Word Mark</div>
+                                <p class="row card-txt">A word mark is a type of trademark that consists solely of words, letters, or numbers, without any design elements or stylization</p>
                             </div>
-                        </div>
+                    </div>
                     </div>
                     <div class="col-2 pt-2">
-                        <div class="card" @onclick="() => SelectMarkType(MarkType.Figurative)">
-                        <div class="card-body card-body-tm cbd-tm-2">
+                    <div class="btn btn-light button-marktype shadow p-3 mb-5 bg-white" @onclick="() => SelectMarkType(MarkType.Figurative)">
+                        <div class="row">
                                 <div class="card-img">
                                     <img class="img-tm d-inline-block align-text-top"
                                          src="regisForm-img/tm-fm.png"
                                          alt="figurativemark"
                                          loading="lazy" />
                                 </div>
-                                <div class="card-title card-tle">Figurative Mark</div>
-                                <p class="card-text card-txt">A figurative mark includes designs, graphics, symbols, or images along with or instead of words.</p>
-                            </div>
+                            <div class="row card-tle">Figurative Mark</div>
+                            <p class="row card-txt">A figurative mark includes designs, graphics, symbols, or images along with or instead of words.</p>
                         </div>
                     </div>
+                    </div>
                     <div class="col-2 pt-2">
-                        <div class="card" @onclick="() => SelectMarkType(MarkType.FigurativeWithWord)">
-                            <div class="card-body card-body-tm cbd-tm-3">
+                        <div class="btn btn-light button-marktype shadow p-3 mb-5 bg-white" @onclick="() => SelectMarkType(MarkType.FigurativeWithWord)">
+                            <div class="row">
                                 <div class="card-img">
                                     <img class="img-tm d-inline-block align-text-top"
                                          src="regisForm-img/tm-fwm.png"
                                          alt="figurativewmark"
                                          loading="lazy" />
                                 </div>
-                                <div class="card-title card-tle">Figurative with Word Mark</div>
-                                <p class="card-text card-txt">A combination of figurative and word mark.</p>
+                                <div class="row card-tle">Figurative with Word Mark</div>
+                                <p class="row card-txt">A combination of figurative and word mark.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-2 pt-2">
-                        <div class="card" @onclick="() => SelectMarkType(MarkType.ThreeD)">
-                            <div class="card-body card-body-tm cbd-tm-4">
+                        <div class="btn btn-light button-marktype shadow p-3 mb-5 bg-white" @onclick="() => SelectMarkType(MarkType.ThreeD)">
+                        <div class="row">
                                 <div class="card-img">
                                     <img class="img-tm d-inline-block align-text-top"
                                          src="regisForm-img/tm-dm.png"
                                          alt="3dmark"
                                          loading="lazy" />
                                 </div>
-                                <div class="card-title card-tle">3D Mark</div>
-                                <p class="card-text card-txt">A three-dimensional representation used as a trademark.</p>
+                                <div class="row card-tle">3D Mark</div>
+                                <p class="row card-txt">A three-dimensional representation used as a trademark.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-2 pt-2">
-                        <div class="card" @onclick="() => SelectMarkType(MarkType.Collective)">
-                            <div class="card-body card-body-tm cbd-tm-5">
+                    <div class="btn btn-light button-marktype shadow p-3 mb-5 bg-white" @onclick="() => SelectMarkType(MarkType.Collective)">
+                        <div class="row">
                                 <div class="card-img">
                                     <img class="img-tm d-inline-block align-text-top"
                                          src="regisForm-img/tm-cm.png"
                                          alt="collectivemark"
                                          loading="lazy" />
                                 </div>
-                                <div class="card-title card-tle">Collective Mark</div>
-                                <p class="card-text card-txt">A collective mark is a trademark owned by an organization (such as an association), used by its members to identify themselves with a level of quality or accuracy.</p>
+                                <div class="row card-tle">Collective Mark</div>
+                                <p class="row card-txt">A collective mark is a trademark owned by an organization (such as an association), used by its members to identify themselves with a level of quality or accuracy.</p>
                             </div>
                         </div>
                     </div>
@@ -166,7 +168,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 ">
+                        <div class="col-5 offset-1">
                             <div class="row">
                                 <!-- Add image upload here -->
                                 <SfUploader ID="UploadFiles">
@@ -790,6 +792,9 @@
         await modal.HideAsync();
     }
 }
+
+
+
 
 @code{
 

@@ -38,6 +38,12 @@
     font-size: 1.5vw;
     margin-bottom: 0.5rem;
 }
+.title,
+.sub-title {
+    display: inline-block;
+    vertical-align: middle; /* Optional: Align text vertically */
+    margin-right: 10px; /* Optional: Add spacing between elements */
+}
 
 .description {
     font-size: 1.5vw;
@@ -63,3 +69,29 @@
     bottom: 1rem;
     right: 1rem;
 }
+
+.modal-header {
+    background-color: #ed6b30;
+}
+.modal-title {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.btn.closemodal {
+    background-color: #a4acac;
+    color: #fff;
+}
+    .btn.closemodal:hover {
+        background-color: #343131;
+    }
+
+.btn.consentyesmodal {
+    background-color: #ed6b30;
+    color: #fff;
+}
+    .btn.consentyesmodal:hover {
+        background-color: #341406;
+    }
+
