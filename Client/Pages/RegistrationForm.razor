@@ -15,17 +15,15 @@
 <EditForm Model="@trademarkModel" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <div class="pt-3"></div>
-    <div class="card shadow p-3 bg-white rounded">
-        <div class="row">
-            <div class="title-tm pt-2">
-                TRADEMARK APPLICATION - IPOPHL Form 400
-            </div>
+    <div class="card card-main shadow bg-white">
+        <div class="card-header title-tm">
+            TRADEMARK APPLICATION - IPOPHL Form 400
         </div>
-        <div class="row mt-5">
+        <div class="row align-content-center">
             <div class="row icon-forms">
                 @foreach (var button in buttons)
                 {
-                    <div class="col-3 text-center text-wrap">
+                    <div class="col-3 align-content-center text-center text-wrap">
                         <button type="button"
                                 @onclick="() => ActivateButton(button)"
                                 class="btn button-section text-center shadow p-3 mb-5 bg-white rounded @(button.IsActive ? "active" : "")">
@@ -46,9 +44,10 @@
         @if (infoTrademark)
         {
             //type of mark
-            <div class="row card-type-tm pt-2 d-flex justify-content-center text-center">
-                <div class="card-group-tle">Type of Mark</div>
-                <div class="card-group-subtxt fst-italic">
+            <div class="row pt-2 d-flex">
+                <div class="tm-info-tle">TRADEMARK INFORMATION</div>
+                <div class="text-center">Type of Mark</div>
+                <div class="text-center fst-italic">
                     Kindly specify what type of Mark are you applying for:
                 </div>
 
@@ -56,7 +55,7 @@
                 {
                     @if (markType != MarkType.None)
                     {
-                        <div class="col-2 pt-2">
+                        <div class="col-2 pt-2 align-content-center">
                             <button class="@GetButtonClass(markType)"
                                     @onclick="() => SelectMarkType(markType)">
                                 <div class="row">
@@ -83,28 +82,28 @@
                         <div class="row">
                             <div class="col form-floating mb-2">
                                 <InputText @bind-Value="@trademarkModel.Title" placeholder="Title of the Mark" class="form-control" id="markTitle" required />
-                                <label for="markTitle">Title of the Mark</label>
+                                <label class="ms-2" for="markTitle">Title of the Mark</label>
                                 <ValidationMessage For="@(() => trademarkModel.Title)" />
                             </div>
                         </div>
                         <div class="row">
                              <div class="col form-floating mb-2">
                                  <InputText @bind-Value="@trademarkModel.ClaimColors" placeholder="Claim of Colors (ex. #ffffff, #000000)" class="form-control" id="claimColors" required />
-                                 <label for="claimColors">Claim of Colors (ex. #ffffff, #000000)</label>
+                                 <label class="ms-2" for="claimColors">Claim of Colors (ex. #ffffff, #000000)</label>
                                  <ValidationMessage For="@(() => trademarkModel.ClaimColors)" />
                              </div>
                         </div>
                         <div class="row">
                             <div class="col form-floating mb-2">
                                 <InputText @bind-Value="@trademarkModel.TranslationTransliteration" placeholder="Translation/Transliteration" class="form-control" id="translation" required />
-                                <label for="translation">Translation/Transliteration</label>
+                                <label class="ms-2" for="translation">Translation/Transliteration</label>
                                 <ValidationMessage For="@(() => trademarkModel.TranslationTransliteration)" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col form-floating mb-2">
                                 <InputText @bind-Value="@trademarkModel.Disclaimer" placeholder="Disclaimer" class="form-control" id="claimColors" required />
-                                <label for="claimColors">Disclaimer</label>
+                                <label class="ms-2" for="claimColors">Disclaimer</label>
                                 <ValidationMessage For="@(() => trademarkModel.Disclaimer)" />
                             </div>
                         </div>
@@ -118,7 +117,7 @@
                                     </UploaderAsyncSettings>
                             </SfUploader>
                         </div>
-                        <div class="row pt-5">
+                        <div class="row pt-3">
                                 <div class="col-5">
                                     <label class="label-claimCPrio fst-italic">Would you like to claim Convention Property?</label>
                                 </div>
@@ -144,7 +143,7 @@
                                 <div class="row p-3">
                                     <div class="row">
                                         <div class="form-floating m-2">
-                                            <SfTextBox @bind-Value="@trademarkModel.PriorForeignApplicationNo" Placeholder='First Name' FloatLabelType='@FloatLabelType.Auto' id="priorForeignApplicationNo"></SfTextBox>
+                                            <SfTextBox @bind-Value="@trademarkModel.PriorForeignApplicationNo" Placeholder='Priot Foreign Application #' FloatLabelType='@FloatLabelType.Auto' id="priorForeignApplicationNo"></SfTextBox>
                                             <ValidationMessage For="@(() => trademarkModel.PriorForeignApplicationNo)" />
                                         </div>
                                     </div>
@@ -400,7 +399,7 @@
                     </div>
                 </div> <!--end of applicant information-->
         }
-        else if (residentAgent && selectedMarkType != MarkType.None)
+        else if (residentAgent )
         {
                 <!--RESIDENT AGENT / AUTHORIZED REPRESENTATIVE-->
                 <div class="row">
@@ -603,7 +602,8 @@
         Collective
     }
 
-    private MarkType? selectedMarkType = null;
+    public MarkType? selectedMarkType = null;
+
 
     private void SelectMarkType(MarkType markType)
     {
@@ -731,8 +731,7 @@
 
     class TrademarkModel
     {
-        [Required(ErrorMessage = "Please select a type of mark.")]
-        public MarkType SelectedMarkType { get; set; }
+       
 
         [Required(ErrorMessage = "This field is required.")]
         public string Title { get; set; }

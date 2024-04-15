@@ -17,12 +17,25 @@
 }
 
 .title-tm {
+    background-color: #ed6b30;
     font-size: 22px;
     font-weight: bold;
     text-align: center;
+    color: #FBF9F1;
+    border-radius: 10px 10px 0 0;
 }
 
+.tm-info-tle {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.card-main {
+    border-radius: 0 0 10px 10px;
+}
 .card-tle {
+    margin-left: 2px;
     font-size: 11px;
     font-style: oblique;
     font-weight: bold;
@@ -30,6 +43,7 @@
 }
 
 .card-txt {
+    margin-left: 2px;
     font-size: 10px;
     text-align: center;
 }
@@ -46,7 +60,7 @@
 }
 
 .form-txt {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .icon-bttn-o {
