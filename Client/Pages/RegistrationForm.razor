@@ -28,26 +28,24 @@
                     <div class="col-3 justify-content-center text-center text-wrap">
                         <button type="button"
                                 @onclick="() => ActivateButton(button)"
-                                class="btn button-section form-txt text-center shadow p-3 mb-5 bg-white rounded @(button.IsActive ? "active" : "")">
+                                class="btn button-section text-center shadow p-3 mb-5 bg-white rounded @(button.IsActive ? "active" : "")">
                             @if (!string.IsNullOrWhiteSpace(button.IconClass))
                             {
-                                <i class="@button.IconClass form-txt-o text-center"></i>
+                                <i class="@button.IconClass text-center"></i>
                             }
-                            <div class="row form-txt text-wrap">@button.Label</div>
+                            <div class="row text-center text-wrap">@button.Label</div>
                         </button>
                     </div>
                 }
             </div>
         </div>
+        
         <div class="mt-1">
         </div>
+
         @if (infoTrademark)
         {
             //type of mark
-            <div class="row">
-                <div class="title-tm">TRADEMARK INFORMATION</div>
-            </div>
-            
             <div class="row card-type-tm pt-2 d-flex justify-content-center text-center">
                 <div class="card-group-tle">Type of Mark</div>
                 <div class="card-group-subtxt fst-italic">
@@ -79,48 +77,48 @@
             </div> <!--end div for type of mark-->
             <!--Trademark Information-->
             @if (selectedMarkType != MarkType.None)
-                {
-                    <div class="row pt-3">
-                        <div class="col-6 form-txt">
-                            <div class="row">
-                                <div class="col form-floating mb-2">
-                                    <InputText @bind-Value="@trademarkModel.Title" placeholder="Title of the Mark" class="form-control" id="markTitle" required />
-                                    <label for="markTitle">Title of the Mark</label>
-                                    <ValidationMessage For="@(() => trademarkModel.Title)" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col form-floating mb-2">
-                                    <InputText @bind-Value="@trademarkModel.ClaimColors" placeholder="Claim of Colors (ex. #ffffff, #000000)" class="form-control" id="claimColors" required />
-                                    <label for="claimColors">Claim of Colors (ex. #ffffff, #000000)</label>
-                                    <ValidationMessage For="@(() => trademarkModel.ClaimColors)" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col form-floating mb-2">
-                                    <InputText @bind-Value="@trademarkModel.TranslationTransliteration" placeholder="Translation/Transliteration" class="form-control" id="translation" required />
-                                    <label for="translation">Translation/Transliteration</label>
-                                    <ValidationMessage For="@(() => trademarkModel.TranslationTransliteration)" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col form-floating mb-2">
-                                    <InputText @bind-Value="@trademarkModel.Disclaimer" placeholder="Disclaimer" class="form-control" id="claimColors" required />
-                                    <label for="claimColors">Disclaimer</label>
-                                    <ValidationMessage For="@(() => trademarkModel.Disclaimer)" />
-                                </div>
+            {
+                <div class="row pt-3">
+                    <div class="col-6 form-txt">
+                        <div class="row">
+                            <div class="col form-floating mb-2">
+                                <InputText @bind-Value="@trademarkModel.Title" placeholder="Title of the Mark" class="form-control" id="markTitle" required />
+                                <label for="markTitle">Title of the Mark</label>
+                                <ValidationMessage For="@(() => trademarkModel.Title)" />
                             </div>
                         </div>
-                        <div class="col-5 offset-1">
-                            <div class="row">
-                                <!-- Add image upload here -->
-                                <SfUploader ID="UploadFiles">
-                                    <UploaderEvents FileSelected="onFileSelect" BeforeRemove="onRemove"></UploaderEvents>
-                                    <UploaderAsyncSettings SaveUrl="api/FileAction/Save" RemoveUrl="api/FileAction/Remove">
-                                    </UploaderAsyncSettings>
-                                </SfUploader>
+                        <div class="row">
+                             <div class="col form-floating mb-2">
+                                 <InputText @bind-Value="@trademarkModel.ClaimColors" placeholder="Claim of Colors (ex. #ffffff, #000000)" class="form-control" id="claimColors" required />
+                                 <label for="claimColors">Claim of Colors (ex. #ffffff, #000000)</label>
+                                 <ValidationMessage For="@(() => trademarkModel.ClaimColors)" />
+                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col form-floating mb-2">
+                                <InputText @bind-Value="@trademarkModel.TranslationTransliteration" placeholder="Translation/Transliteration" class="form-control" id="translation" required />
+                                <label for="translation">Translation/Transliteration</label>
+                                <ValidationMessage For="@(() => trademarkModel.TranslationTransliteration)" />
                             </div>
-                            <div class="row pt-5">
+                        </div>
+                        <div class="row">
+                            <div class="col form-floating mb-2">
+                                <InputText @bind-Value="@trademarkModel.Disclaimer" placeholder="Disclaimer" class="form-control" id="claimColors" required />
+                                <label for="claimColors">Disclaimer</label>
+                                <ValidationMessage For="@(() => trademarkModel.Disclaimer)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row pe-3">
+                            <!-- Add image upload here -->
+                            <SfUploader ID="UploadFiles">
+                                <UploaderEvents FileSelected="onFileSelect" BeforeRemove="onRemove"></UploaderEvents>
+                                <UploaderAsyncSettings SaveUrl="api/FileAction/Save" RemoveUrl="api/FileAction/Remove">
+                                    </UploaderAsyncSettings>
+                            </SfUploader>
+                        </div>
+                        <div class="row pt-5">
                                 <div class="col-5">
                                     <label class="label-claimCPrio fst-italic">Would you like to claim Convention Property?</label>
                                 </div>
@@ -136,10 +134,10 @@
                                         No
                                     </label>
                                 </div>
-                            </div><!--end of claim of convention property yes/no-->
-                        </div>
-                    </div> <!--end of Trademark Information-->
-                    @if (claimConventionPriority)
+                        </div><!--end of claim of convention property yes/no-->
+                    </div>
+                </div> <!--end of Trademark Information-->
+                @if (claimConventionPriority)
                     {
                         <Modal @ref="modal" Title="Claim of Convention Priority" IsVerticallyCentered="true">
                             <BodyTemplate>
@@ -198,7 +196,7 @@
                             </FooterTemplate>
                         </Modal>
                     }
-                }
+            }
         }
         else if (goodsServices)
         {
@@ -229,12 +227,6 @@
                         <!--add multiples classes??-->
                     </div>
                 </div> <!--end of Goods and Services-->
-                <div class="col">
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary mr-1">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
-                    </div>
-                </div>
             </div>
         }
         else if (applicantInfo)
@@ -579,9 +571,9 @@
 
     private List<ButtonInfo> buttons = new List<ButtonInfo>
     {
-        new ButtonInfo { Label = "Trademark Information", IconClass = "bi bi-card-text form-txt-o" },
+        new ButtonInfo { Label = "Trademark Information", IconClass = "bi bi-card-text icon-bttn-o" },
         new ButtonInfo { Label = "Goods and Services" },
-        new ButtonInfo { Label = "Applicant Information", IconClass = "bi bi-person-fill form-txt-g" },
+        new ButtonInfo { Label = "Applicant Information", IconClass = "bi bi-person-fill icon-bttn-g" },
         new ButtonInfo { Label = "Resident Agent/ Authorized Representative" }
     };
 

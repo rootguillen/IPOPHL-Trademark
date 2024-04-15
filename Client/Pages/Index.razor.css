@@ -38,6 +38,7 @@
     font-size: 1.5vw;
     margin-bottom: 0.5rem;
 }
+
 .title,
 .sub-title {
     display: inline-block;
@@ -73,12 +74,14 @@
 .modal-header {
     background-color: #ed6b30;
 }
+
 .modal-title {
     font-size: 1.5vw;
     font-weight: bold;
     color: #ffffff;
 }
-.modal-body{
+
+.modal-body {
     text-align: justify;
 }
 
@@ -86,6 +89,7 @@
     background-color: #a4acac;
     color: #fff;
 }
+
     .btn.closemodal:hover {
         background-color: #343131;
     }
@@ -94,7 +98,7 @@
     background-color: #ed6b30;
     color: #fff;
 }
+
     .btn.consentyesmodal:hover {
         background-color: #341406;
     }
-

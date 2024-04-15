@@ -7,13 +7,17 @@
     height: 100vh;
 }
 
+.card-main {
+    background-color: #FBF9F1;
+}
+
 .btn.active {
     background-color: #ed6b30 !important;
     color: white !important;
 }
 
 .title-tm {
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     text-align:center;
 }
@@ -57,13 +61,6 @@
         height: auto;
     }
 
-.nationality-select {
-    font-family: 'Century Gothic';
-    font-size: 11px;
-    height: 66px;
-    width: auto;
-}
-
 .btn {
     padding: 10px;
     border-radius: 5px;
@@ -88,15 +85,6 @@
     height: auto;
 }
 
-.card-tle {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.card-txt {
-    color: #666666;
-    margin-top: 5px;
-}
 
 .card-type-tm {
     margin-top: 20px;
@@ -108,5 +96,6 @@
 }
 
 .card-group-subtxt {
-    margin-top: 10px;
+    margin-top: 5px;
+    font-size: 12px;
 }
