@@ -22,16 +22,16 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="row icon-forms d-flex text-wrap">
+            <div class="row icon-forms">
                 @foreach (var button in buttons)
                 {
-                    <div class="col-3 justify-content-center text-center text-wrap">
+                    <div class="col-3 text-center text-wrap">
                         <button type="button"
                                 @onclick="() => ActivateButton(button)"
                                 class="btn button-section text-center shadow p-3 mb-5 bg-white rounded @(button.IsActive ? "active" : "")">
                             @if (!string.IsNullOrWhiteSpace(button.IconClass))
                             {
-                                <i class="@button.IconClass text-center"></i>
+                                <i class="@button.IconClass "></i>
                             }
                             <div class="row text-center text-wrap">@button.Label</div>
                         </button>
@@ -571,9 +571,9 @@
 
     private List<ButtonInfo> buttons = new List<ButtonInfo>
     {
-        new ButtonInfo { Label = "Trademark Information", IconClass = "bi bi-card-text icon-bttn-o" },
-        new ButtonInfo { Label = "Goods and Services" },
-        new ButtonInfo { Label = "Applicant Information", IconClass = "bi bi-person-fill icon-bttn-g" },
+        new ButtonInfo { Label = "Trademark Information"},
+        new ButtonInfo { Label = "Goods and Services"},
+        new ButtonInfo { Label = "Applicant Information"},
         new ButtonInfo { Label = "Resident Agent/ Authorized Representative" }
     };
 
