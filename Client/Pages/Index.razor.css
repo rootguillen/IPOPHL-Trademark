@@ -1,104 +1,111 @@
 ﻿body {
-    padding: 1.667rem;
-    font-family: 'Copperplate Gothic';
+    padding: 5px;
+    font-family: 'Century Gothic';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.btn.active {
+    background-color: #ed6b30 !important;
+    color: white !important;
+}
+
+.title-tm {
+    background-color: #ed6b30;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: #FBF9F1;
+}
+
+.tm-info-tle {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.card-main {
+    border-radius: 0 0 10px 10px;
+}
+.card-tle {
+    margin-left: 2px;
+    font-size: 11px;
+    font-style: oblique;
+    font-weight: bold;
+    text-align: center;
+}
+.card-txt {
+    margin-left: 2px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.img-tm {
+    width: 50px;
+    height: auto;
+}
+.control_wrapper {
+    font-family: 'Century Gothic';
+    font-size: 11px;
+    height: 66px;
+}
+
+.form-txt {
     font-size: 12px;
 }
 
-.row {
-    margin-top: 1rem;
-}
-
-.card {
-    position: relative;
-    border-radius: 4px;
-    background: #fff;
-    height: 250px;
-    width: auto;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,0);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    cursor: pointer;
-    text-align: left;
-    padding: 1.25rem;
-}
-
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,0);
-        background: #ed6b30;
+    .icon-bttn-o {
+        color: #ed6b30;
+        font-size: 10px;
+        width: 25px;
+        height: auto;
+    }
+    .icon-bttn-g {
+        color: #a4acac;
+        font-size: 10px;
+        width: 25px;
+        height: auto;
     }
 
-.card-tm {
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: 80px;
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.btn-dark {
+    background-color: #F6995C !important;
+    color: #000000 !important;
+}
+.btn-light {
+    background-color: #ffffff !important;
+    color: #000000 !important;
 }
 
-.title {
-    font-weight: bold;
-    font-size: 1.5vw;
-    margin-bottom: 0.5rem;
-}
 
-.title,
-.sub-title {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
-}
 
-.description {
-    font-size: 1.5vw;
-    line-height: 1.4;
-}
-
-.about-page-bttn {
-    margin-top: auto;
-    width: 50%;
-    padding: 0.5rem 1rem;
-    background-color: #ed6b30;
-    color: #fff;
-    font-size: 1.5vw;
-    border: none;
-    border-radius: 0.333rem;
-    cursor: pointer;
-}
-
-.img-left-bttn {
-    position: absolute;
-    width: 17%;
+.card-img img {
+    width: 50px;
     height: auto;
-    bottom: 1rem;
-    right: 1rem;
 }
-
-.modal-header {
-    background-color: #ed6b30;
+.card-type-tm {
+    margin-top: 20px;
 }
-
-.modal-title {
-    font-size: 1.5vw;
+.card-group-tle {
+    font-size: 1.5em;
     font-weight: bold;
-    color: #ffffff;
+}
+.card-group-subtxt {
+    margin-top: 5px;
+    font-size: 12px;
 }
 
-.modal-body {
-    text-align: justify;
+.form-row-title {
+    color: #ed6b30;
+}
+.formrow {
+    background-color: #a4acac
 }
 
-.btn.closemodal {
-    background-color: #a4acac;
-    color: #fff;
-}
-
-    .btn.closemodal:hover {
-        background-color: #343131;
-    }
-
-.btn.consentyesmodal {
-    background-color: #ed6b30;
-    color: #fff;
-}
-
-    .btn.consentyesmodal:hover {
-        background-color: #341406;
-    }
