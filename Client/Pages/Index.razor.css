@@ -1,4 +1,9 @@
-﻿.img-tm {
+﻿.form-txt{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.img-tm {
     width: 50px;
     height: auto;
 }
@@ -23,6 +28,9 @@
 
 } /*main input forms e.g. trademark information, applicant information*/
 
+.footer-tm {
+    background-color: #a4acac;
+}/*Submit button*/
 
     .icon-bttn-o {
         color: #ed6b30;
@@ -60,9 +68,6 @@
     font-size: 15px;
     color: #ed6b30;
     font-weight: bold;
-}
-.e-btn-group {
-    background-color: #ed6b30;
-    word-wrap: break-word;
-}
+} /*Trademark external Links*/
+
 

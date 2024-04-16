@@ -9,7 +9,11 @@
 @using System.Collections.Generic;
 @using System.Threading.Tasks;
 @using Syncfusion.Blazor.Buttons;
-@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.SplitButtons;
+@using Syncfusion.Blazor.Cards;
+@inject NavigationManager NavigationManager;
+@inject IJSRuntime JSRuntime
+
 
 
 <PageTitle>Trademark - Trademark Application</PageTitle>
@@ -232,32 +236,21 @@
                             <div class="row pt-2 tm-application-tle">APPLICANT INFORMATION</div>
                             <div class="row">
                                 <div class="col ">
-                                    <label class="label-typeApplicant form-txt fst-italic">What type of applicant you are?</label>
+                                    <label class="label-typeApplicant form-txt">What type of applicant you are?</label>
                                 </div>
                                 <div class="col">
-                                    <input class="form-check-input" type="radio" name="applicantType" id="individualRadio" value="individual" @onclick="() => ToggleApplicantType(true)" />
-                                    <label class="form-check-label" for="individualRadio">
-                                        <i class="bi bi-person"></i> Individual
-                                    </label>
+                                    <SfRadioButton Label="Individual" Name="Individual" Value="Individual"  IconCss="e-icons e-chevron-down-fill" IconPosition="Right" Checked="@CheckedValue" @onclick="() => ToggleApplicantType(true)"></SfRadioButton>
                                 </div>
                                 <div class="col">
-                                    <input class="form-check-input form-txt" type="radio" name="applicantType" id="companyRadio" value="company" @onclick="() => ToggleApplicantType(false)" />
-                                    <label class="form-check-label" for="companyRadio">
-                                        <i class="bi bi-buildings"></i> Company/Corporation
-                                    </label>
+                                    <SfRadioButton Label="Company/Corporation" Name="Company/Corporation" Value="Company/Corporation" CssClass="" Checked="@CheckedValue" @onclick="() => ToggleApplicantType(false)"></SfRadioButton>
                                 </div>
                                 <div class="col">
-                                    <input class="form-check-input" type="radio" name="applicantType" id="schoolRadio" value="school" @onclick="() => ToggleApplicantType(false)" />
-                                    <label class="form-check-label" for="schoolRadio">
-                                        <i class="bi bi-building"></i> School
-                                    </label>
+                                    <SfRadioButton Label="School" Name="School" Value="School" CssClass="" Checked="@CheckedValue" @onclick="() => ToggleApplicantType(true)"></SfRadioButton>
                                 </div>
                                 <div class="col">
-                                    <input class="form-check-input" type="radio" name="applicantType" id="governmentRadio" value="government" @onclick="() => ToggleApplicantType(false)" />
-                                    <label class="form-check-label" for="governmentRadio">
-                                        <i class="bi bi-people"></i> Government
-                                    </label>
+                                    <SfRadioButton Label="Government" Name="Government" Value="Government" CssClass="" Checked="@CheckedValue" @onclick="() => ToggleApplicantType(false)"></SfRadioButton>
                                 </div>
+                                @code{private string CheckedValue = " ";}
                             </div>
                             <div class="row pt-1">
                                 <div class="col-3">
@@ -515,31 +508,35 @@
                                     </div>
                                 </div>
                             </div>
+                        </div><!--end of resident agent-->
+
+                        <div class="card-footer footer-tm">
+                            button
                         </div>
-
-                        <!--end of resident agent-->
-
-                        <button type="submit">Submit Form</button>
                     }
                 </div>
-
             </div>
-
         </EditForm>
     </div>
 
     <div class="col-2">
         <div class="row">
-
-        </div>
-        <div class="row">
             <SfButtonGroup CssClass="e-btn-group e-vertical">
-                <div class="form-row-title">Trademark Form Links</div>
+                <div class="form-row-title">Trademark External Links</div>
                 @foreach (var button in Sfbuttons)
                 {
-                    <SfButton IsPrimary="true" CssClass="e-flat" style="white-space: normal; text-align:left;">@button.Label</SfButton>
+                    <SfButton IsPrimary="true" CssClass="e-flat" style="white-space: normal; text-align:left;" @onclick="() => ButtonClicked(button.Label)">@button.Label</SfButton>
                 }
             </SfButtonGroup>
+        </div>
+        <div class="row pt-3">
+            <SfCard>
+                <div class="form-row-title">Other Related Matters</div>
+                <CardContent EnableSeparator="true"></CardContent>
+                <CardContent>
+                    
+                </CardContent>
+            </SfCard>
         </div>
     </div>
 </div>
@@ -553,7 +550,7 @@
 
     private List<SfButtonInfo> Sfbuttons = new List<SfButtonInfo>
     {
-        new SfButtonInfo {Label = "Registration Form", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Trademark | IPOPHL Page", CssClass = "e-flat"},
         new SfButtonInfo {Label = "Declaration of Actual Use", CssClass = "e-flat"  },
         new SfButtonInfo {Label = "Request for Renewal", CssClass = "e-flat"  },
         new SfButtonInfo {Label = "Request for Revival in Publication", CssClass = "e-flat"  },
@@ -563,11 +560,38 @@
         new SfButtonInfo {Label = "Assignment of Application for Registration of TM", CssClass = "e-flat"  },
         new SfButtonInfo {Label = "Assignment of Registered Trademark", CssClass = "e-flat"  }
     };
+
+      private async Task RedirectToExternalUrl(string url)
+    {
+        await JSRuntime.InvokeVoidAsync("window.open", url, "_blank");
+    }
+    private async Task ButtonClicked(string buttonLabel)
+    {
+        string externalUrl = GetExternalUrlForButton(buttonLabel);
+        if (!string.IsNullOrEmpty(externalUrl))
+        {
+            await RedirectToExternalUrl(externalUrl);
+        }
+    }
+
+    private string GetExternalUrlForButton(string buttonLabel)
+    {
+        switch (buttonLabel)
+        {
+            case "Trademark | IPOPHL Page":
+                return "https://www.ipophil.gov.ph/trademark/";
+            case "Declaration of Actual Use":
+                return "";
+            case "Request for Renewal":
+                return "";
+
+            default:
+                return null;
+        }
+    }
 }
 
 
-
-<!--trademark section-->
 @code {
     private bool infoTrademark = false;
     private bool applicantInfo = false;
