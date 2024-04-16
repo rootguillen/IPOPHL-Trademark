@@ -49,4 +49,8 @@
     <ProjectReference Include="..\Shared\IPOPHLTrademark.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\data\" />
+  </ItemGroup>
+
 </Project>

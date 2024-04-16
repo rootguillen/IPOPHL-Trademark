@@ -1,60 +1,28 @@
-﻿body {
-    padding: 5px;
-    font-family: 'Century Gothic';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.btn.active {
-    background-color: #ed6b30 !important;
-    color: white !important;
-}
-
-.title-tm {
-    background-color: #ed6b30;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    color: #FBF9F1;
-}
-
-.tm-info-tle {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: left;
-}
-
-.card-main {
-    border-radius: 0 0 10px 10px;
-}
-.card-tle {
-    margin-left: 2px;
-    font-size: 11px;
-    font-style: oblique;
-    font-weight: bold;
-    text-align: center;
-}
-.card-txt {
-    margin-left: 2px;
-    font-size: 10px;
-    text-align: center;
-}
-
-.img-tm {
+﻿.img-tm {
     width: 50px;
     height: auto;
 }
-.control_wrapper {
-    font-family: 'Century Gothic';
-    font-size: 11px;
-    height: 66px;
-}
 
-.form-txt {
-    font-size: 12px;
-}
+.card {
+    background-color: #ffffff;
+} /*main card of editform*/
+
+.title-tm {
+    font-size: 22px;
+    background-color: #ed6b30;
+    color: #ffffff; 
+    font-weight: bold;
+    text-align: center;
+} /*TRADEMARK APPLICATION - IPOPHL FORM 400*/
+
+    .btn-label{
+        text-align: center;
+    } /*main button: type of mark, applicant, resident agent, goods/services*/
+
+.tm-info-title{
+
+} /*main input forms e.g. trademark information, applicant information*/
+
 
     .icon-bttn-o {
         color: #ed6b30;
@@ -75,37 +43,26 @@
     margin-bottom: 10px;
     width: 100%;
 }
-.btn-dark {
-    background-color: #F6995C !important;
-    color: #000000 !important;
-}
-.btn-light {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-}
-
-
-
-.card-img img {
-    width: 50px;
-    height: auto;
-}
-.card-type-tm {
-    margin-top: 20px;
-}
-.card-group-tle {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-.card-group-subtxt {
-    margin-top: 5px;
-    font-size: 12px;
-}
+    .btn-dark {
+        background-color: #F6995C !important;
+        color: #000000 !important;
+    }
+    .btn-light {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    .btn.active {
+        background-color: #ed6b30 !important;
+        color: white !important;
+    }
 
 .form-row-title {
+    font-size: 15px;
     color: #ed6b30;
+    font-weight: bold;
 }
-.formrow {
-    background-color: #a4acac
+.e-btn-group {
+    background-color: #ed6b30;
+    word-wrap: break-word;
 }
 

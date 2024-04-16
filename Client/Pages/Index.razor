@@ -14,36 +14,28 @@
 
 <PageTitle>Trademark - Trademark Application</PageTitle>
 
-<div class="row">
-    <div class="col-9">
+<div class="row pt-3">
+    <div class="col-10 container-fluid">
         <EditForm Model="@trademarkModel" OnValidSubmit="@HandleValidSubmit">
             <DataAnnotationsValidator />
-            <div class="pt-3"></div>
-            <div class="card card-main shadow bg-white ">
+            <div class="card card-main shadow">
                 <div class="card-header title-tm">
                     TRADEMARK APPLICATION - IPOPHL Form 400
                 </div>
                 <div class="card-body">
-                    <div class="row align-content-center">
-                        <div class="row icon-forms">
+                    <div class="row">
+                        <div class="row">
                             @foreach (var button in buttons)
                             {
-                                <div class="col-3 align-content-center text-center text-wrap">
+                                <div class="col-3">
                                     <button type="button"
                                             @onclick="() => ActivateButton(button)"
-                                            class="btn button-section text-center shadow p-3 mb-5 bg-white rounded @(button.IsActive ? "active" : "")">
-                                        @if (!string.IsNullOrWhiteSpace(button.IconClass))
-                                        {
-                                            <i class="@button.IconClass "></i>
-                                        }
-                                        <div class="row text-center text-wrap">@button.Label</div>
+                                            class="btn shadow p-3 mb-5 rounded @(button.IsActive ? "active" : "")">
+                                        <div class="row btn-label">@button.Label</div>
                                     </button>
                                 </div>
                             }
                         </div>
-                    </div>
-
-                    <div class="mt-1">
                     </div>
 
                     @if (infoTrademark)
@@ -59,8 +51,8 @@
                             @foreach (MarkType markType in Enum.GetValues(typeof(MarkType)))
                             {
                                 @if (markType != MarkType.None)
-                                {
-                                    <div class="col-2 pt-2 align-content-center">
+                                { 
+                                    <div class="col-2 pt-2">
                                         <button class="@GetButtonClass(markType)"
                                                 @onclick="() => SelectMarkType(markType)">
                                             <div class="row">
@@ -536,20 +528,44 @@
         </EditForm>
     </div>
 
-    <div class="col-3">
-        <div class="row">
-            <p class="form-row-title">Trademark Form Links</p>
-            <SfButtonGroup CssClass="formrow e-btn-group e-vertical">
-                <ButtonGroupButton>Registration Form</ButtonGroupButton>
-                <ButtonGroupButton>Middle</ButtonGroupButton>
-                <ButtonGroupButton>Bottom</ButtonGroupButton>
-            </SfButtonGroup>
-        </div>
+    <div class="col-2">
         <div class="row">
 
         </div>
+        <div class="row">
+            <SfButtonGroup CssClass="e-btn-group e-vertical">
+                <div class="form-row-title">Trademark Form Links</div>
+                @foreach (var button in Sfbuttons)
+                {
+                    <SfButton IsPrimary="true" CssClass="e-flat" style="white-space: normal; text-align:left;">@button.Label</SfButton>
+                }
+            </SfButtonGroup>
+        </div>
     </div>
 </div>
+
+@code {
+    public class SfButtonInfo
+    {
+        public string Label { get; set; }
+        public string CssClass { get; set; }
+    }
+
+    private List<SfButtonInfo> Sfbuttons = new List<SfButtonInfo>
+    {
+        new SfButtonInfo {Label = "Registration Form", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Declaration of Actual Use", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Request for Renewal", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Request for Revival in Publication", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Request for Priority Exam", CssClass = "e-flat" },
+        new SfButtonInfo {Label = "Request for Suspension of Action", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Extension of Time to File Response", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Assignment of Application for Registration of TM", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Assignment of Registered Trademark", CssClass = "e-flat"  }
+    };
+}
+
+
 
 <!--trademark section-->
 @code {
@@ -590,7 +606,6 @@
     public class ButtonInfo
     {
         public string Label { get; set; }
-        public string IconClass { get; set; }
         public bool IsActive { get; set; }
     }
 
