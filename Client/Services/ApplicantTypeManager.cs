@@ -18,10 +18,10 @@ namespace IPOPHLTrademark.Client.Services
             isIndividualSelected = isIndividual;
         }
 
-        /*public void ToggleApplicantType(bool isIndividual)
+        public void ToggleApplicantType(bool isIndividual)
         {
             trademarkModel.applicantInformation.ApplicantPosition = isIndividual ? "Not Applicable" : string.Empty;
             trademarkModel.applicantInformation.NameCompanyCorpGovASch = isIndividual ? "Not Applicable" : string.Empty;
-        }*/
+        }
     }
 }
