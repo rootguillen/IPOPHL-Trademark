@@ -1,9 +1,15 @@
-﻿.form-txt{
-    font-size: 1.4vh;
+﻿body {
+    font-family: 'Century Gothic';
 }
+.form-txt {
+    font-size: 1.6vh;
+    font-size: 1vw;
+    white-space:normal;
+    overflow: hidden;
+}/*input form fiels: name, bday, number, emailadd, etc.*/
 
 .img-tm {
-    width: 50px;
+    width: 50%;
     height: auto;
 }
 
@@ -12,22 +18,74 @@
 } /*main card of editform*/
 
 .title-tm {
-    font-size: 2.4vh;
-    font-size: 1.4vw;
+    font-size: 2.2vh;
+    font-size: 1.2vw;
     background-color: #ed6b30;
     color: #ffffff;
     font-weight: bold;
     text-align: center;
 } /*TRADEMARK APPLICATION - IPOPHL FORM 400*/
 
-    .btn-label{
-        text-align: center;
-    } /*main button: type of mark, applicant, resident agent, goods/services*/
+.btn-label {
+    text-align: center;
+} /*main button: type of mark, applicant, resident agent, goods/services*/
 
-.tm-info-title{
+.tmsection{
+    font-size: 1.8vh;
+    font-size: 1vw;
+} /*button.label: trademark information, applicant information, resident agent information, goods&services information*/
 
+.tm-info-tle1 {
+    font-size: 1.8vh;
+    font-size: 1vw;
+    font-weight: bold;
+    background-color: #ed6b30;
 } /*main input forms e.g. trademark information, applicant information*/
+.tm-info-tle2 {
+    font-size: 1.8vh;
+    font-size: 1vw;
+    font-weight: bold;
+    background-color: #a4acac;
+}/*main input forms e.g. applicant information, resident agent*/
 
+.subtitle {
+    text-align: center;
+    font-size: 2vh;
+}
+.subtext {
+    text-align: center;
+    font-size: 1.6vh;
+}
+
+.marktype-button {
+    padding: 3px;
+    width: 150px;
+    height: 250px;
+}
+.type-title {
+    font-size: 2.2vh;
+    font-size: 1.2vw;
+}/*button.label: word mark, figurative mark, etc.*/
+.type-text {
+    font-size: 1.8vh;
+    font-size: 0.8vw;
+    text-align: justify;
+    white-space: break-spaces;
+    overflow: hidden;
+}/*button.description*/
+
+
+ .add-class-button{
+     background-color: #ed6b30;
+     color: #ffffff;
+     font-size: 1.8vh;
+ }/*goods and services, add class button*/
+
+
+.label-typeApplicant{
+    font-size: 1.5vh;
+    font-style: italic;
+}/*"What typ of applicant are you?*/
 .footer-tm {
     background-color: #a4acac;
     color: #ffffff;

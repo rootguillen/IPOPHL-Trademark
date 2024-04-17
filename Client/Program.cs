@@ -1,5 +1,6 @@
 using Blazored.Toast;
 using IPOPHLTrademark.Client;
+using IPOPHLTrademark.Client.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Syncfusion.Blazor;
@@ -15,6 +16,7 @@ builder.Services.AddSyncfusionBlazor();
 builder.Services.AddBlazorBootstrap();
 builder.Services.AddBlazoredToast();
 
+builder.Services.AddTransient<ApplicantTypeManager>();
 
 
 
