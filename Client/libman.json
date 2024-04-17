@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "@syncfusion/blazor-themes@25.1.35",
+      "destination": "wwwroot/themes/syncfusion/blazor-themes/"
+    }
+  ]
+}
