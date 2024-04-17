@@ -1,6 +1,5 @@
 ﻿.form-txt{
-    font-size: 12px;
-    font-style: italic;
+    font-size: 1.4vh;
 }
 
 .img-tm {
@@ -13,9 +12,10 @@
 } /*main card of editform*/
 
 .title-tm {
-    font-size: 22px;
+    font-size: 2.4vh;
+    font-size: 1.4vw;
     background-color: #ed6b30;
-    color: #ffffff; 
+    color: #ffffff;
     font-weight: bold;
     text-align: center;
 } /*TRADEMARK APPLICATION - IPOPHL FORM 400*/
@@ -30,17 +30,18 @@
 
 .footer-tm {
     background-color: #a4acac;
+    color: #ffffff;
 }/*Submit button*/
 
     .icon-bttn-o {
         color: #ed6b30;
-        font-size: 10px;
+        font-size: 1.4vh;
         width: 25px;
         height: auto;
     }
     .icon-bttn-g {
         color: #a4acac;
-        font-size: 10px;
+        font-size: 1.4vh;
         width: 25px;
         height: auto;
     }
