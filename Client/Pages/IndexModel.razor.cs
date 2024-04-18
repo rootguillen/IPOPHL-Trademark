@@ -9,6 +9,8 @@ namespace IPOPHLTrademark.Client.Pages
     {
         public TrademarkModel trademarkModel {  get; set; } = new TrademarkModel();
 
+        public NationalityDataModel nationalityModel { get; set; } = new NationalityDataModel();
+
         public void HandleValidSubmit()
         {
 

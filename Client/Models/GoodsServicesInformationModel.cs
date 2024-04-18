@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using IPOPHLTrademark.Client.Shared.Enum;
 
 namespace IPOPHLTrademark.Client.Models
 {

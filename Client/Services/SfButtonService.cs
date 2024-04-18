@@ -6,12 +6,8 @@ namespace IPOPHLTrademark.Client.Services
 {
     public class SfButtonInfo
     {
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public string Label { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public string CssClass { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     }
 
     public class SfButtonService
@@ -19,9 +15,14 @@ namespace IPOPHLTrademark.Client.Services
         public List<SfButtonInfo> Sfbuttons = new List<SfButtonInfo>
     {
         new SfButtonInfo {Label = "Trademark | IPOPHL Page", CssClass = "e-flat"},
-        new SfButtonInfo {Label = "Declaration of Actual Use", CssClass = "e-flat"},
-        new SfButtonInfo {Label = "Request for Renewal", CssClass = "e-flat"},
-        // Add more buttons here...
+        new SfButtonInfo {Label = "Declaration of Actual Use", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Request for Renewal", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Request for Revival in Publication", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Request for Priority Exam", CssClass = "e-flat" },
+        new SfButtonInfo {Label = "Request for Suspension of Action", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Extension of Time to File Response", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Assignment of Application for Registration of TM", CssClass = "e-flat"  },
+        new SfButtonInfo {Label = "Assignment of Registered Trademark", CssClass = "e-flat"  }
     };
 
         public async Task RedirectToExternalUrl(IJSRuntime JSRuntime, string url)

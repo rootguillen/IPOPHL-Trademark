@@ -12,11 +12,7 @@ namespace IPOPHLTrademark.Client.Services
         }
 
         public string stringChecked = "Individual";
-        bool isIndividualSelected = false;
-        public void ToggleApplicantType(bool isIndividual)
-        {
-            isIndividualSelected = isIndividual;
-        }
+        bool isIndividual = false;
 
         public void ToggleApplicantType(bool isIndividual)
         {

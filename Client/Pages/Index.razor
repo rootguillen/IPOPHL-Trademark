@@ -5,26 +5,24 @@
 @inject HttpClient Http
 @using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Components.Forms
-@using Syncfusion.Blazor.Data;
-@using Syncfusion.Blazor.Inputs;
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Inputs
 @using Blazored.Toast.Services
-@using System.ComponentModel.DataAnnotations;
-@using System.Collections.Generic;
-@using System.Threading.Tasks;
-@using Syncfusion.Blazor.Buttons;
-@using Syncfusion.Blazor.SplitButtons;
-@using Syncfusion.Blazor.Cards;
-@inject NavigationManager NavigationManager;
-@inject IJSRuntime JSRuntime;
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@using System.Threading.Tasks
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.Cards
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 @inherits IndexModel
-@inject ApplicantTypeManager ApplicantTypeManager
-
 
 
 <PageTitle>Trademark - Trademark Application</PageTitle>
 
 <div class="row pt-3">
-    <div class="col-10 container-fluid">
+    <div class="col-10 container-fluid d-flex">
         <EditForm Model="@trademarkModel" OnValidSubmit="@HandleValidSubmit">
             <DataAnnotationsValidator />
             <div class="card card-main shadow">
@@ -115,6 +113,23 @@
                                             <ValidationMessage For="@(() => trademarkModel.trademarkInformation.Disclaimer)" />
                                         </div>
                                     </div>
+                                    <div class="row pt-3">
+                                        <div class="col-5">
+                                            <label class="form-txt fst-italic">Would you like to claim Convention Property?</label>
+                                        </div>
+                                        <div class="col form-check form-txt">
+                                            <input class="form-check-input" type="radio" name="claimConventionPriority" id="claimConventionPriorityYes" value="yes" @onclick="(OnShowModalClick)" required />
+                                            <label class="form-check-label fst-italic" for="claimConventionPriorityYes">
+                                                Yes
+                                            </label>
+                                        </div>
+                                        <div class="col form-check form-txt">
+                                            <input class="form-check-input" type="radio" name="claimConventionPriority" id="claimConventionPriorityNo" value="no" @onclick="() => GoodsServices()" required />
+                                            <label class="form-check-label fst-italic" for="claimConventionPriorityNo">
+                                                No
+                                            </label>
+                                        </div>
+                                    </div><!--end of claim of convention property yes/no-->
                                 </div>
                                 <div class="col-6">
                                     <div class="row pe-3">
@@ -124,23 +139,6 @@
                                             </UploaderAsyncSettings>
                                         </SfUploader>
                                     </div>
-                                    <div class="row pt-3">
-                                        <div class="col-5">
-                                            <label class="label-claimCPrio fst-italic">Would you like to claim Convention Property?</label>
-                                        </div>
-                                        <div class="col-1 form-check">
-                                            <input class="form-check-input" type="radio" name="claimConventionPriority" id="claimConventionPriorityYes" value="yes" @onclick="(OnShowModalClick)" required />
-                                            <label class="form-check-label fst-italic" for="claimConventionPriorityYes">
-                                                Yes
-                                            </label>
-                                        </div>
-                                        <div class="col-1 form-check">
-                                            <input class="form-check-input" type="radio" name="claimConventionPriority" id="claimConventionPriorityNo" value="no" @onclick="() => GoodsServices()" required />
-                                            <label class="form-check-label fst-italic" for="claimConventionPriorityNo">
-                                                No
-                                            </label>
-                                        </div>
-                                    </div><!--end of claim of convention property yes/no-->
                                 </div>
                             </div> <!--end of Trademark Information-->
                             @if (claimConventionPriority)
@@ -188,21 +186,20 @@
                         //Goods and Services
                         <div class="row d-flex">
                             <div class="row d-flex">
-                            <div class="tm-info-tle2">GOODS AND SERVICES</div>
-                        </div>
+                                <div class="tm-info-tle2">GOODS AND SERVICES</div>
+                            </div>
                         @foreach (var classEntry in ClassEntries)
                         {
                             <div class="row p-3">
-                                <div class="form-floating">
-                                        <SfDropDownList @bind="@trademarkModel.goodsServicesInformation.NClass" TValue="string" TItem="ClassDataModel" PopupHeight="auto"
-                                                    PopupWidth="auto" Placeholder="Nice Class" DataSource="@ClassListModel">
-                                        <DropDownListFieldSettings Value="classEntry.ClassId Text="classEntry.ClassName"></DropDownListFieldSettings>
-                                    </SfDropDownList>
-                                </div>
-                                <div class="form-floating">
-                                    <InputTextArea @bind="@trademarkModel.goodsServicesInformation.GSComments" class="form-control" style="height: 100px" required />
-                                    <label>Terms</label>
-                                        <ValidationMessage For="@(() => trademarkModel.goodsServicesInformation.GSComments)" />
+                                <!--<div class="row">
+                                        <SfDropDownList @bind-Value="@trademarkModel.goodsServicesInformation.NClass" TValue="string" TItem="ClassDataModel" PopupHeight="auto"
+                                                        PopupWidth="auto" Placeholder="Nice Class" DataSource="@ClassListModel">
+                                            <DropDownListFieldSettings Value="classEntry.ClassId Text="classEntry.ClassName"></DropDownListFieldSettings>
+                                        </SfDropDownList>
+                                </div>-->
+                                <div class="row">
+                                    <SfTextBox Placeholder="Terms" FloatLabelType="@FloatLabelType.Auto" @bind-Value="@trademarkModel.goodsServicesInformation.GSComments"></SfTextBox>
+                                    <ValidationMessage For="@(() => trademarkModel.goodsServicesInformation.GSComments)" />
                                 </div>
                             </div>
                         }
@@ -214,7 +211,7 @@
                     else if (applicantInfo && selectedMarkType.HasValue && selectedMarkType != MarkType.None)
                     {
                         <!--Applicant Information-->
-                        <div class="row d-flex">
+                        <div class="row">
                             <div class="row tm-info-tle1">APPLICANT INFORMATION</div>
                             <div class="row pt-2">
                                 <div class="col-4">
@@ -249,9 +246,9 @@
                                 </div>
                             <div class="col-1 mt-2 form-txt">Sex</div>
                             <div class="form-txt col-2 mt-2">
-                                <SfRadioButton Label="Male" Name="Gender" Value="male" @bind-Checked="@trademarkModel.applicantInformation.ApplicantGender"></SfRadioButton>
-                                    <SfRadioButton Label="Female" Name="Gender" Value="female" @bind-Checked="@trademarkModel.applicantInformation.ApplicantGender"></SfRadioButton>
-                                    <ValidationMessage For="@(() => trademarkModel.applicantInformation.ApplicantGender)" />
+                                    <SfRadioButton Label="Male" Name="Gender.Male" Value="male" @bind-Checked="@trademarkModel.residentAgentInformation.RAGender"></SfRadioButton>
+                                    <SfRadioButton Label="Female" Name="Gender.Female" Value="female" @bind-Checked="@trademarkModel.residentAgentInformation.RAGender"></SfRadioButton>
+                                    <ValidationMessage For="@(() => trademarkModel.residentAgentInformation.RAGender)" />
                             </div>
                             </div>
                             <div class="row pt-1">
@@ -323,20 +320,20 @@
                         </div>-->
                             <div class="row">
                                 <div class="col">
-                                    <div class="input-group form-txt mt-2 mb-3">
+                                    <div class="input-group mt-2 mb-3">
                                         <span class="input-group-text" id="phone-icon">
                                             <i class="bi bi-telephone-fill"></i>
                                         </span>
-                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantMobNum" placeholder="Mobile Number" class="form-floating" id="applicantMobNum" required />
+                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantMobNum" placeholder="Mobile Number" class="form-floating form-txt" id="applicantMobNum" required />
                                         <ValidationMessage For="@(() => trademarkModel.applicantInformation.ApplicantMobNum)" />
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="input-group form-txt mt-2 mb-3">
+                                    <div class="input-group mt-2 mb-3">
                                         <span class="input-group-text" id="email-icon">
                                             <i class="bi bi-envelope-fill"></i>
                                         </span>
-                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantEmailAdd" placeholder="Email Address" class="form-floating" id="applicantEmailAdd" required />
+                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantEmailAdd" placeholder="Email Address" class="form-floating form-txt" id="applicantEmailAdd" required />
                                         <ValidationMessage For="@(() => trademarkModel.applicantInformation.ApplicantEmailAdd)" />
                                     </div>
                                 </div>
@@ -384,30 +381,19 @@
                                         <ValidationMessage For="@(() => trademarkModel.residentAgentInformation.RAMName)" />
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="col-1 mt-2">Sex</div>
-                                    <div class="form-txt col-1 mt-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="RAGender" id="RAFemale">
-                                            <label class="form-check-label" for="RAFemale">
-                                                Female
-                                            </label>
-                                        </div>
+                                    <div class="col-1 mt-2 form-txt">Sex</div>
+                                    <div class="form-txt col-2 mt-2">
+                                        <SfRadioButton Label="Male" Name="Gender.Male" Value="male" @bind-Checked="@trademarkModel.residentAgentInformation.RAGender"></SfRadioButton>
+                                        <SfRadioButton Label="Female" Name="Gender.Female" Value="female" @bind-Checked="@trademarkModel.residentAgentInformation.RAGender"></SfRadioButton>
+                                        <ValidationMessage For="@(() => trademarkModel.residentAgentInformation.RAGender)" />
                                     </div>
-                                    <div class="form-txt col-1 mt-2">
-                                        <input class="form-check-input" type="radio" name="RAGender" id="RAMale">
-                                        <label class="form-check-label" for="RAMale">
-                                            Male
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
                             <div class="row pt-1">
                                 <div class="col">Complete Address</div>
                                 <div class="row">
                                     <div class="col-5 mt-2">
                                         <div class="form-floating form-txt mb-2 text-wrap">
-                                            <InputText @bind-Value="@trademarkModel.residentAgentInformation.RAAddress" placeholder="House No., Street Info, Village/Subdivision, Barangay" class="form-control form-txt" id="applicantAddress" required />
+                                            <InputText @bind-Value="@trademarkModel.residentAgentInformation.RAAddress" placeholder="House No., Street Info, Village/Subdivision, Barangay" class="form-control form-txt" id="applicantAddress" required/>
                                             <label for="applicantAddress">House No., Street Info, Village/Subdivision, Barangay</label>
                                             <ValidationMessage For="@(() => trademarkModel.residentAgentInformation.RAAddress)" />
                                         </div>
@@ -434,7 +420,7 @@
                                             <DropDownListEvents ValueChange="OnCountryChange" TItem="ResidenceDataModel" TValue="string"></DropDownListEvents>
                                         </SfDropDownList>
                                     </div>
-                                    <div class="col-1 mt-2">
+                                    <div class="col mt-2">
                                         <div class="form-floating form-txt mb-2">
                                             <InputText @bind-Value="@trademarkModel.residentAgentInformation.RAZipCode" placeholder="Zip Code" class="form-control" id="applicantZipCode" required />
                                             <label for="applicantZipCode">Zip Code</label>
@@ -445,27 +431,27 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="form-txt mt-2 mb-3">
+                                    <div class="input-group mt-2 mb-3">
                                         <span class="input-group-text" id="phone-icon">
                                             <i class="bi bi-telephone-fill"></i>
                                         </span>
-                                        <InputText @bind-Value="@trademarkModel.residentAgentInformation.RAMobNum" placeholder="Mobile Number" class="form-control" id="raMobNum" required />
+                                        <InputText @bind-Value="@trademarkModel.residentAgentInformation.RAMobNum" placeholder="Mobile Number" class="form-control form-txt" id="raMobNum" required />
                                         <ValidationMessage For="@(() => trademarkModel.residentAgentInformation.RAMobNum)" />
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-txt mt-2 mb-3">
+                                    <div class="input-group mt-2 mb-3">
                                         <span class="input-group-text" id="email-icon">
                                             <i class="bi bi-envelope-fill"></i>
                                         </span>
-                                        <InputText @bind-Value="@trademarkModel.residentAgentInformation.RAEmailAdd" placeholder="Email Address" class="form-control" id="raEmailAdd" required />
+                                        <InputText @bind-Value="@trademarkModel.residentAgentInformation.RAEmailAdd" placeholder="Email Address" class="form-control form-txt" id="raEmailAdd" required />
                                         <ValidationMessage For="@(() => trademarkModel.residentAgentInformation.RAEmailAdd)" />
                                     </div>
                                 </div>
                                 <div class="col mt-2">
                                     <div class="form-floating form-txt mb-2">
                                         <SfDropDownList TValue="string" TItem="NationalityDataModel" PopupHeight="auto"
-                                                        PopupWidth="auto " Placeholder="Nationality" DataSource="@NationalityListModel">
+                                                        PopupWidth="auto " Placeholder="Nationality" DataSource="@NationalityListModel" @bind-Value="@trademarkModel.residentAgentInformation.RANationality">
                                             <DropDownListFieldSettings Value="NationalityId" Text="NationalityName"></DropDownListFieldSettings>
                                         </SfDropDownList>
                                     </div>
@@ -511,55 +497,6 @@
     private async Task OnButtonClicked(string buttonLabel)
     {
         await buttonService.ButtonClicked(JSRuntime, buttonLabel);
-    }
-}
-@code {
-    public class SfButtonInfo
-    {
-        public string Label { get; set; }
-        public string CssClass { get; set; }
-    }
-
-    private List<SfButtonInfo> Sfbuttons = new List<SfButtonInfo>
-    {
-        new SfButtonInfo {Label = "Trademark | IPOPHL Page", CssClass = "e-flat"},
-        new SfButtonInfo {Label = "Declaration of Actual Use", CssClass = "e-flat"  },
-        new SfButtonInfo {Label = "Request for Renewal", CssClass = "e-flat"  },
-        new SfButtonInfo {Label = "Request for Revival in Publication", CssClass = "e-flat"  },
-        new SfButtonInfo {Label = "Request for Priority Exam", CssClass = "e-flat" },
-        new SfButtonInfo {Label = "Request for Suspension of Action", CssClass = "e-flat"  },
-        new SfButtonInfo {Label = "Extension of Time to File Response", CssClass = "e-flat"  },
-        new SfButtonInfo {Label = "Assignment of Application for Registration of TM", CssClass = "e-flat"  },
-        new SfButtonInfo {Label = "Assignment of Registered Trademark", CssClass = "e-flat"  }
-    };
-
-      private async Task RedirectToExternalUrl(string url)
-    {
-        await JSRuntime.InvokeVoidAsync("window.open", url, "_blank");
-    }
-    private async Task ButtonClicked(string buttonLabel)
-    {
-        string externalUrl = GetExternalUrlForButton(buttonLabel);
-        if (!string.IsNullOrEmpty(externalUrl))
-        {
-            await RedirectToExternalUrl(externalUrl);
-        }
-    }
-
-    private string GetExternalUrlForButton(string buttonLabel)
-    {
-        switch (buttonLabel)
-        {
-            case "Trademark | IPOPHL Page":
-                return "https://www.ipophil.gov.ph/trademark/";
-            case "Declaration of Actual Use":
-                return "";
-            case "Request for Renewal":
-                return "";
-
-            default:
-                return null;
-        }
     }
 }
 
@@ -761,7 +698,6 @@
     }
 }
 
-
 <!--for modal on claim of convention priority-->
 @code{
     private bool claimConventionPriority { get; set; } = true;
@@ -777,16 +713,21 @@
     {
         TrademarkModels.Add(new TrademarkModel());
     }
+
+    private Modal modal = default!;
+
+    private async Task OnShowModalClick()
+    {
+        await modal.ShowAsync();
+    }
+
+    private async Task OnHideModalClick()
+    {
+        await modal.HideAsync();
+    }
 }
 
 <!--for type of applicant; able/disable-->
-@code {
-    private void ToggleApplicantType()
-    {
-        bool isIndividual = ApplicantTypeManager.stringChecked == "Individual";
-        ApplicantTypeManager.ToggleApplicantType(isIndividual);
-    }
-}
 @code{
     private string stringChecked = "Individual";
     bool isIndividualSelected = false;
@@ -823,20 +764,6 @@
         args.CurrentRequest = new List<object> { new { Authorization = "test123" } };
     }
 
-}
-
-@code {
-    private Modal modal = default!;
-
-    private async Task OnShowModalClick()
-    {
-        await modal.ShowAsync();
-    }
-
-    private async Task OnHideModalClick()
-    {
-        await modal.HideAsync();
-    }
 }
 
 <!--class data model**-->
