@@ -1,23 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using IPOPHLTrademark.Client.Services;
 
     public class TrademarkInformationModel
     {
-        //TrademarkInformation Table
-        [Required(ErrorMessage = "This field is required.")]
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public string Title { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        [Required(ErrorMessage = "This field is required.")]
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public string ClaimColors { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        [Required(ErrorMessage = "This field is required.")]
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public string TranslationTransliteration { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        [Required(ErrorMessage = "Disclaimer is required.")]
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public string Disclaimer { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    //TrademarkInformation Table
+    [Required(ErrorMessage = "Select your Type of Mark before proceeding.")]
+    public MarkType MarkType { get; set; }
+    public MarkType selectedMarkType { get; set; }
+
+    [Required(ErrorMessage = "This field is required.")]
+    public string Title { get; set; }
+        
+    [Required(ErrorMessage = "This field is required.")]
+    public string ClaimColors { get; set; }
+       
+    [Required(ErrorMessage = "This field is required.")]
+    public string TranslationTransliteration { get; set; }
+        
+    [Required(ErrorMessage = "Disclaimer is required.")]
+    public string Disclaimer { get; set; }
     }
 

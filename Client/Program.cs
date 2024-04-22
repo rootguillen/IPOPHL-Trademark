@@ -18,6 +18,4 @@ builder.Services.AddBlazoredToast();
 
 builder.Services.AddTransient<ApplicantTypeManager>();
 
-
-
 await builder.Build().RunAsync();

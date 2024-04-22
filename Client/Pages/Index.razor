@@ -14,12 +14,27 @@
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.SplitButtons
 @using Syncfusion.Blazor.Cards
+@using Syncfusion.Blazor.Popups
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 @inherits IndexModel
 
 
 <PageTitle>Trademark - Trademark Application</PageTitle>
+
+<SfDialog @ref="myModal" Width="300px">
+    <DialogTemplates>
+        <Header>
+            <h4>Modal Title</h4>
+        </Header>
+        <Content>
+            <p>This is a modal dialog that appears automatically.</p>
+        </Content>
+        <Footer>
+            <button @onclick="CloseModal">Close</button>
+        </Footer>
+    </DialogTemplates>
+</SfDialog>
 
 <div class="row pt-3">
     <div class="col-10 container-fluid d-flex">
@@ -191,12 +206,12 @@
                         @foreach (var classEntry in ClassEntries)
                         {
                             <div class="row p-3">
-                                <!--<div class="row">
+                                <div class="row">
                                         <SfDropDownList @bind-Value="@trademarkModel.goodsServicesInformation.NClass" TValue="string" TItem="ClassDataModel" PopupHeight="auto"
                                                         PopupWidth="auto" Placeholder="Nice Class" DataSource="@ClassListModel">
                                             <DropDownListFieldSettings Value="classEntry.ClassId Text="classEntry.ClassName"></DropDownListFieldSettings>
                                         </SfDropDownList>
-                                </div>-->
+                                </div>
                                 <div class="row">
                                     <SfTextBox Placeholder="Terms" FloatLabelType="@FloatLabelType.Auto" @bind-Value="@trademarkModel.goodsServicesInformation.GSComments"></SfTextBox>
                                     <ValidationMessage For="@(() => trademarkModel.goodsServicesInformation.GSComments)" />
@@ -211,8 +226,10 @@
                     else if (applicantInfo && selectedMarkType.HasValue && selectedMarkType != MarkType.None)
                     {
                         <!--Applicant Information-->
-                        <div class="row">
-                            <div class="row tm-info-tle1">APPLICANT INFORMATION</div>
+                        <div class="row d-flex">
+                            <div class="row d-flex">
+                                <div class="row tm-info-tle1">APPLICANT INFORMATION</div>
+                            </div>
                             <div class="row pt-2">
                                 <div class="col-4">
                                     <label class="label-typeApplicant">What type of applicant are you?</label>
@@ -324,7 +341,7 @@
                                         <span class="input-group-text" id="phone-icon">
                                             <i class="bi bi-telephone-fill"></i>
                                         </span>
-                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantMobNum" placeholder="Mobile Number" class="form-floating form-txt" id="applicantMobNum" required />
+                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantMobNum" placeholder="Mobile Number" class="form-control form-txt" id="raMobNum" required />
                                         <ValidationMessage For="@(() => trademarkModel.applicantInformation.ApplicantMobNum)" />
                                     </div>
                                 </div>
@@ -333,7 +350,7 @@
                                         <span class="input-group-text" id="email-icon">
                                             <i class="bi bi-envelope-fill"></i>
                                         </span>
-                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantEmailAdd" placeholder="Email Address" class="form-floating form-txt" id="applicantEmailAdd" required />
+                                        <InputText @bind-Value="@trademarkModel.applicantInformation.ApplicantEmailAdd" placeholder="Email Address" class="form-control form-txt" id="raEmailAdd" required />
                                         <ValidationMessage For="@(() => trademarkModel.applicantInformation.ApplicantEmailAdd)" />
                                     </div>
                                 </div>
@@ -352,7 +369,7 @@
                     else if (residentAgent && selectedMarkType.HasValue && selectedMarkType != MarkType.None)
                     {
                         <!--RESIDENT AGENT / AUTHORIZED REPRESENTATIVE-->
-                        <div class="row">
+                        <div class="row d-flex">
                             <div class="tm-info-tle2">RESIDENT AGENT / AUTHORIZED REPRESENTATIVE</div>
                             <div class="row">
                                 <div class="col">
@@ -490,6 +507,22 @@
     </div>
 </div>
 
+@code {
+    private SfDialog myModal;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("showModal");
+        }
+    }
+
+    private void CloseModal()
+    {
+        myModal.Hide();
+    }
+}
 <!--tm external links-->
 @code {
     private readonly SfButtonService buttonService = new SfButtonService();

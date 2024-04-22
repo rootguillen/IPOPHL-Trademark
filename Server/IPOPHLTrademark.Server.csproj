@@ -37,11 +37,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\IPOPHLTrademark.Client.csproj" />
-    <ProjectReference Include="..\Shared\IPOPHLTrademark.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
   </ItemGroup>
 
 

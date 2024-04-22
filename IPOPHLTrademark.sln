@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPOPHLTrademark.Client", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPOPHLTrademark.Shared", "Shared\IPOPHLTrademark.Shared.csproj", "{80DEE3C4-DF13-46D6-B231-E8FE382FCEB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPOPHLTrademark.DataAccessLibrary", "DataAccessLibrary\IPOPHLTrademark.DataAccessLibrary.csproj", "{3D3EE86E-497A-48B7-8EDD-2DADC5A7C9C8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{80DEE3C4-DF13-46D6-B231-E8FE382FCEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80DEE3C4-DF13-46D6-B231-E8FE382FCEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80DEE3C4-DF13-46D6-B231-E8FE382FCEB3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D3EE86E-497A-48B7-8EDD-2DADC5A7C9C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D3EE86E-497A-48B7-8EDD-2DADC5A7C9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D3EE86E-497A-48B7-8EDD-2DADC5A7C9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D3EE86E-497A-48B7-8EDD-2DADC5A7C9C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
