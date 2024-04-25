@@ -22,20 +22,6 @@
 
 <PageTitle>Trademark - Trademark Application</PageTitle>
 
-<SfDialog @ref="myModal" Width="300px">
-    <DialogTemplates>
-        <Header>
-            <h4>Modal Title</h4>
-        </Header>
-        <Content>
-            <p>This is a modal dialog that appears automatically.</p>
-        </Content>
-        <Footer>
-            <button @onclick="CloseModal">Close</button>
-        </Footer>
-    </DialogTemplates>
-</SfDialog>
-
 <div class="row pt-3">
     <div class="col-10 container-fluid d-flex">
         <EditForm Model="@trademarkModel" OnValidSubmit="@HandleValidSubmit">
@@ -477,7 +463,7 @@
                         </div><!--end of resident agent-->
 
                         <div class="card-footer footer-tm">
-                            button
+                            <SfButton CssClass = "e-outline" @onclick="@OpenOuterDialog">Submit for preview</SfButton>
                         </div>
                     }
                 </div>
@@ -507,22 +493,56 @@
     </div>
 </div>
 
-@code {
-    private SfDialog myModal;
+<SfDialog Width="500px" ShowCloseIcon="true" IsModal="true" @bind-Visible="@IsOuterDialogVisible">
+    <DialogTemplates>
+        <Header>IPOPHL Privacy Statement</Header>
+        <Content>
+            This is the outer dialog.
+            <div class="mt-5"></div>
+            <DialogFooter>
+                <SfButton @onclick="@OpenInnerDialog">Accept</SfButton>
+            </DialogFooter>
+            @if (IsInnerDialogVisible)
+            {
+                <SfDialog Width="500px" ShowCloseIcon="true" IsModal="true" @bind-Visible="@IsInnerDialogVisible">
+                    <DialogTemplates>
+                        <Header>Data Privacy Statement</Header>
+                        <Content>
+                            This is the inner dialog.
+                            <div class="mt-5"></div>
+                            <DialogFooter>
+                                <SfButton @onclick="@HandleValidSubmit">Agree</SfButton>
+                                <SfButton Content="Cancel" @onclick="@CloseInnerDialog" />
+                            </DialogFooter>
+                        </Content>
+                    </DialogTemplates>
+                </SfDialog>
+            }
+        </Content>
+    </DialogTemplates>
+</SfDialog>
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+@code {
+    private bool IsOuterDialogVisible { get; set; } = false;
+    private bool IsInnerDialogVisible { get; set; } = false;
+
+    private void OpenOuterDialog()
     {
-        if (firstRender)
-        {
-            await JSRuntime.InvokeVoidAsync("showModal");
-        }
+        IsOuterDialogVisible = true;
     }
 
-    private void CloseModal()
+    private void OpenInnerDialog()
     {
-        myModal.Hide();
+        IsInnerDialogVisible = true;
+    }
+
+    private void CloseInnerDialog()
+    {
+        IsOuterDialogVisible = false;
+        IsInnerDialogVisible = false;
     }
 }
+
 <!--tm external links-->
 @code {
     private readonly SfButtonService buttonService = new SfButtonService();
