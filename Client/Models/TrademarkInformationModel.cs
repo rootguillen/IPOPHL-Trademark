@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using IPOPHLTrademark.Client.Shared.Enum;
 using IPOPHLTrademark.Client.Services;
 
     public class TrademarkInformationModel

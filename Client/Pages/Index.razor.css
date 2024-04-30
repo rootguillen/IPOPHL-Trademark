@@ -129,4 +129,15 @@
     font-weight: bold;
 } /*Trademark external Links*/
 
+.custom-fill {
+    background-color: #007bff; /* Blue fill color */
+    color: white; /* Text color */
+}/*for gender button*/
+
+.custom-outline {
+    border-color: #007bff; /* Blue border color */
+    color: #007bff; /* Text color */
+}/*for gender button*/
+
+
 

@@ -13,7 +13,7 @@ namespace IPOPHLTrademark.Client.Models
         [Required(ErrorMessage = "This field is required.")]
         public string RAMName { get; set; }
         [Required]
-        public GenderSelect? RAGender { get; set; } = null;
+        public GenderSelect RAGender { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         public string RAPosition { get; set; }
         [Required(ErrorMessage = "This field is required.")]

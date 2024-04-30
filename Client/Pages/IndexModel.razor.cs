@@ -17,5 +17,26 @@ namespace IPOPHLTrademark.Client.Pages
             // Reset the form after saving
             trademarkModel = new TrademarkModel();
         }
+
+        public bool genderSelected = true;
+
+        public bool IsOuterDialogVisible { get; set; } = false;
+        public bool IsInnerDialogVisible { get; set; } = false;
+
+        public void OpenOuterDialog()
+        {
+            IsOuterDialogVisible = true;
+        }
+
+        public void OpenInnerDialog()
+        {
+            IsInnerDialogVisible = true;
+        }
+
+        public void CloseInnerDialog()
+        {
+            IsOuterDialogVisible = false;
+            IsInnerDialogVisible = false;
+        }
     }
 }
