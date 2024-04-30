@@ -20,6 +20,8 @@ namespace IPOPHLTrademark.Client.Pages
 
         public bool genderSelected = true;
 
+
+        //for submit preview button with modal
         public bool IsOuterDialogVisible { get; set; } = false;
         public bool IsInnerDialogVisible { get; set; } = false;
 

@@ -71,8 +71,8 @@
                                                              alt="@GetMarkTypeAltText(markType)"
                                                              loading="lazy" />
                                                     </div>
-                                                    <div class="type-title">@GetMarkTypeTitle(markType)</div>
-                                                    <div class="type-text">@GetMarkTypeDescription(markType)</div>
+                                                    <div class="@GetTypeTitleClass(markType)">@GetMarkTypeTitle(markType)</div>
+                                                    <div class="@GetTypeTextClass(markType)">@GetMarkTypeDescription(markType)</div>
                                                 </div>
                                             </button>
                                         </div>
@@ -664,6 +664,16 @@
             return "btn btn-light";
         }
 
+    }
+
+    private string GetTypeTitleClass(IPOPHLTrademark.Client.Shared.Enum.MarkType markType)
+    {
+        return selectedMarkType == markType ? "type-title dark-text" : "type-title light-text";
+    }
+
+    private string GetTypeTextClass(IPOPHLTrademark.Client.Shared.Enum.MarkType markType)
+    {
+        return selectedMarkType == markType ? "type-text dark-text" : "type-text light-text";
     }
 
     private string GetMarkTypeImagePath(IPOPHLTrademark.Client.Shared.Enum.MarkType markType)

@@ -73,7 +73,12 @@
     white-space: break-spaces;
     overflow: hidden;
 }/*button.description*/
-
+.dark-text {
+    color: #ffffff;
+}/*mark type text default*/
+ .light-text{
+     color: #000000;
+ }/*mark type text when clicked*/
 
  .add-class-button{
      background-color: #ed6b30;
@@ -111,7 +116,7 @@
     width: 100%;
 }
     .btn-dark {
-        background-color: #F6995C !important;
+        background-color: #ed6b30 !important;
         color: #000000 !important;
     }
     .btn-light {
@@ -128,16 +133,6 @@
     color: #ed6b30;
     font-weight: bold;
 } /*Trademark external Links*/
-
-.custom-fill {
-    background-color: #007bff; /* Blue fill color */
-    color: white; /* Text color */
-}/*for gender button*/
-
-.custom-outline {
-    border-color: #007bff; /* Blue border color */
-    color: #007bff; /* Text color */
-}/*for gender button*/
 
 
 
