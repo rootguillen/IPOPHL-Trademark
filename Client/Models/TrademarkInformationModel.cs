@@ -5,20 +5,23 @@ using IPOPHLTrademark.Client.Services;
     public class TrademarkInformationModel
     {
     //TrademarkInformation Table
-    [Required(ErrorMessage = "Select your Type of Mark before proceeding.")]
+    [Required]
     public MarkType MarkType { get; set; }
     public MarkType selectedMarkType { get; set; }
 
-    [Required(ErrorMessage = "This field is required.")]
+    [Required]
     public string Title { get; set; }
         
-    [Required(ErrorMessage = "This field is required.")]
+    [Required]
     public string ClaimColors { get; set; }
        
-    [Required(ErrorMessage = "This field is required.")]
+    [Required]
     public string TranslationTransliteration { get; set; }
         
-    [Required(ErrorMessage = "Disclaimer is required.")]
+    [Required]
     public string Disclaimer { get; set; }
+
+    [Required]
+    public string TrademarkIMG { get; set; }
     }
 

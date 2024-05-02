@@ -6,38 +6,40 @@ namespace IPOPHLTrademark.Client.Models
     public class ApplicantInformationModel
     {
         //ApplicantInformation Table
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string ApplicantLName { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string ApplicantFName { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
         public string ApplicantMName { get; set; }
        
         [Required]
         public GenderSelect ApplicantGender { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string ApplicantPosition { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string NameCompanyCorpGovASch { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string ApplicantAddress { get; set; }
-        
+
+        [Required]
         public string ApplicantCountry { get; set; }
+        [Required]
         public string ApplicantState { get; set; }
+        [Required]
         public string ApplicantCity { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string ApplicantZipCode { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string ApplicantMobNum { get; set; }
         
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string ApplicantEmailAdd { get; set; }
         
         [Required]

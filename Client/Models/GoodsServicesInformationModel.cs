@@ -7,7 +7,7 @@ namespace IPOPHLTrademark.Client.Models
         //GoodsServices Table
         [Required]
         public string NClass { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
+        [Required]
         public string GSComments { get; set; }
     }
 }

@@ -1,23 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using IPOPHLTrademark.Client.Models;
+﻿using IPOPHLTrademark.Client.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace IPOPHLTrademark.Client.Data
 {
-    public class AppDBContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        protected readonly IConfiguration Configuration;
-
-        public AppDBContext(IConfiguration configuration)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
         {
-            Configuration = configuration;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            // connect to sql server with connection string from app settings
-            options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnectionString"));
-        }
+        // Define DbSet properties for each entity model
+        public DbSet<TrademarkInformationModel> TrademarkInformations { get; set; }
+        public DbSet<ApplicantInformationModel> ApplicantInformations { get; set; }
+        //public DbSet<ApplicantTypeModel> ApplicantTypes { get; set; }
+        public DbSet<ResidentAgentInformationModel> ResidentAgentInformations { get; set; }
+        public DbSet<GoodsServicesInformationModel> GoodsServicesInformations { get; set; }
+        public DbSet<ClaimConventionPriorityModel> ClaimConventionPriorities { get; set; }
 
-        
+        // Other configuration or customization as needed
     }
 }

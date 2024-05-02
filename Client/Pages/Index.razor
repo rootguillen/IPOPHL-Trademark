@@ -474,9 +474,10 @@
                                 <div class="col mt-2">
                                     <div class="form-floating form-txt mb-2">
                                         <SfDropDownList TValue="string" TItem="NationalityDataModel" PopupHeight="auto"
-                                                        PopupWidth="auto " Placeholder="Nationality">
+                                                        PopupWidth="auto " Placeholder="Nationality" @bind-Value="@trademarkModel.residentAgentInformation.RANationality">
                                             <DropDownListFieldSettings Value="NationalityId" Text="NationalityName"></DropDownListFieldSettings>
                                         </SfDropDownList>
+                                        <ValidationMessage For="@(() => trademarkModel.residentAgentInformation.RANationality)" />
                                     </div>
                                 </div>
                             </div>
@@ -517,15 +518,9 @@
     <DialogTemplates>
         <Header>IPOPHL PRIVACY STATEMENT AS PER RA 10173 ALSO KNOWN AS "DATA PRIVACY ACT OF 2012"</Header>
         <Content>
-            By clicking the "I Agree" button", I
-            understand that I am giving consent to the collection, storage,
-            sharing and other necessary processing of the personal
-            information contained in this application, freely and voluntarily,
-            to the Intellectual Property Office of the Philippines (IPOPHL) and
-            its partners, in the exercise of its mandate as the lead
-            government agency for the protection of IP rights and in
-            compliance with the provisions of RA 10173, also known as, the
-            Data Privacy Act of 2012.
+            <div class="text-wrap">
+                By clicking the "I Agree" button", I understand that I am giving consent to the collection, storage, sharing and other necessary processing of the personal information contained in this application, freely and voluntarily, to the Intellectual Property Office of the Philippines (IPOPHL) and its partners, in the exercise of its mandate as the lead government agency for the protection of IP rights and in compliance with the provisions of RA 10173, also known as, the Data Privacy Act of 2012.
+            </div>
             <div class="mt-5"></div>
             <DialogFooter>
                 <SfButton @onclick="@OpenInnerDialog">I Agree</SfButton>
@@ -536,16 +531,7 @@
                     <DialogTemplates>
                         <Header>IMPORTANT REMINDERS</Header>
                         <Content>
-                            Pursuant to Section 124.2 and Section 145 of R.A. 8293 and the Trademark Regulations:
-                            1. The applicant or the registrant shall file DECLARATION OF ACTUAL USE (DAU) of the mark with evidence to that
-                            effect, as prescribed by the Regulations within three (3) years from the filing date of application. Otherwise, the
-                            application shall be REFUSED or the mark shall be REMOVED from the Register by the Director.
-                            2. A certificate of registration shall remain in force for ten (10) years; provided, that the registrant shall file a DAU to
-                            that effect, or shall show valid reasons based on the existence of obstacles to such use, as prescribed by the
-                            Regulations, within one (1) year from the fifth (5th) anniversary of the date of registration, otherwise, the mark
-                            shall be REMOVED from the Register by the Office.
-                            3. A Renewal DAU must be filed within one (1) year from the date of renewal of the registration, otherwise, the
-                            mark shall be removed from the Register.
+                            
                             <div class="mt-5"></div>
                             <DialogFooter>
                                 <SfButton @onclick="@HandleValidSubmit">I understand</SfButton>
