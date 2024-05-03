@@ -5,6 +5,7 @@
 @inject HttpClient Http
 @using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Components.Forms
+@using System.Collections.Generic
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Inputs
@@ -86,7 +87,19 @@
                         @if (selectedMarkType.HasValue && selectedMarkType != IPOPHLTrademark.Client.Shared.Enum.MarkType.None)
                         {
                             <div class="row pt-3">
-                                <div class="col-6 form-txt">
+                                <div class="row">
+                                    <div class="col form-txt text-end">
+                                        <label for="checked" class="me-2">Claiming convention priority?</label>
+                                        <SfSwitch @bind-Checked="isChecked"></SfSwitch>
+                                    </div>
+
+                                    @code {
+                                        private bool isChecked = false;
+                                    }
+                                </div><!--end of claim of convention property yes/no-->
+                            </div>
+                            <div class="row">
+                                <div class="form-txt">
                                     <div class="row">
                                         <div class="col form-floating mb-2">
                                             <InputText @bind-Value="@trademarkModel.trademarkInformation.Title" placeholder="Title of the Mark" class="form-control" id="markTitle" required />
@@ -115,74 +128,87 @@
                                             <ValidationMessage For="@(() => trademarkModel.trademarkInformation.Disclaimer)" />
                                         </div>
                                     </div>
-                                    <div class="row pt-3">
-                                        <div class="col-5">
-                                            <label class="form-txt fst-italic">Would you like to claim Convention Property?</label>
+                                    <div class="row ps-2 pe-2">
+                                        <div class="card">
+                                            @if (isChecked)
+                                            {
+                                                <div class="row p-3">
+                                                    <div class="row">
+                                                        <div class="form-floating ms-2 me-2 mt-2 form-txt">
+                                                            <SfTextBox @bind-Value="@trademarkModel.claimConventionPriority.PriorForeignApplicationNo" Placeholder="Prior Foreign Application No." FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                                                            <ValidationMessage For="@(() => @trademarkModel.claimConventionPriority.PriorForeignApplicationNo)" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-floating ms-2 me-2 mt-2 form-txt">
+                                                            <SfDatePicker @bind-Value="@trademarkModel.claimConventionPriority.DateValue" TValue="DateTime?" Placeholder="Foreign Filing Date"></SfDatePicker>
+                                                            <ValidationMessage For="@(() => @trademarkModel.claimConventionPriority.DateValue)" />
+                                                        </div>
+                                                    </div>
+                                                    <!--
+                                                        <div class="row">
+                                                        <div class="form-floating ms-2 me-2 mt-2 form-txt">
+                                                            <SfDropDownList TValue="string" TItem="ResidenceDataModel" PopupHeight="auto" PopupWidth="auto" Placeholder="Country" DataSource="@CountryListData">
+                                                                <DropDownListFieldSettings Value="CountryId" Text="CountryName"></DropDownListFieldSettings>
+                                                                <ValidationMessage For="@(() => @trademarkModel.claimConventionPriority.Country)" />
+                                                            </SfDropDownList>
+                                                        </div>
+                                                    </div>
+                                                    -->
+                                                </div>
+                                                @foreach (var priority in claimingConventionPriorities)
+                                                {
+                                                    <div class="row p-3">
+                                                        <div class="row">
+                                                            <div class="form-floating ms-2 me-2 mt-2">
+                                                                <SfTextBox @bind-Value="@trademarkModel.claimConventionPriority.PriorForeignApplicationNo" Placeholder="Prior Foreign Application No." FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                                                                <ValidationMessage For="@(() => trademarkModel.claimConventionPriority.PriorForeignApplicationNo)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-floating ms-2 me-2 mt-2">
+                                                                <SfDatePicker @bind-Value="@trademarkModel.claimConventionPriority.DateValue" TValue="DateTime?" Placeholder="Foreign Filing Date"></SfDatePicker>
+                                                            </div>
+                                                        </div>
+                                                        <!--
+                                                        <div class="row">
+                                                            <div class="form-floating ms-2 me-2 mt-2 form-txt">
+                                                                <SfDropDownList TValue="string" TItem="ResidenceDataModel" PopupHeight="auto" PopupWidth="auto" Placeholder="Country" DataSource="@CountryListData">
+                                                                    <DropDownListFieldSettings Value="CountryId" Text="CountryName"></DropDownListFieldSettings>
+                                                                    <ValidationMessage For="@(() => @trademarkModel.claimConventionPriority.Country)" />
+                                                                </SfDropDownList>
+                                                            </div>
+                                                        </div>
+                                                        -->
+                                                    </div>
+                                                }
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-floating m-2">
+                                                            <button class="btn btn-primary" @onclick="AddBatch">+</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @code {
+                                                    private List<ClaimingConventionPriority> claimingConventionPriorities = new List<ClaimingConventionPriority>();
+
+                                                    public class ClaimingConventionPriority
+                                                    {
+                                                        public string PriorForeignApplicationNo { get; set; }
+                                                        public DateTime? DateValue { get; set; }
+                                                    }
+
+                                                    private void AddBatch()
+                                                    {
+                                                        claimingConventionPriorities.Add(new ClaimingConventionPriority());
+                                                    }
+                                                }
+                                            }
                                         </div>
-                                        <div class="col form-check form-txt">
-                                            <input class="form-check-input" type="radio" name="claimConventionPriority" id="claimConventionPriorityYes" value="yes" @onclick="(OnShowModalClick)" required />
-                                            <label class="form-check-label fst-italic" for="claimConventionPriorityYes">
-                                                Yes
-                                            </label>
-                                        </div>
-                                        <div class="col form-check form-txt">
-                                            <input class="form-check-input" type="radio" name="claimConventionPriority" id="claimConventionPriorityNo" value="no" @onclick="() => GoodsServices()" required />
-                                            <label class="form-check-label fst-italic" for="claimConventionPriorityNo">
-                                                No
-                                            </label>
-                                        </div>
-                                    </div><!--end of claim of convention property yes/no-->
-                                </div>
-                                <div class="col-6">
-                                    <div class="row pe-3">
-                                        <SfUploader ID="UploadFiles">
-                                            <UploaderEvents FileSelected="onFileSelect" BeforeRemove="onRemove"></UploaderEvents>
-                                            <UploaderAsyncSettings SaveUrl="api/FileAction/Save" RemoveUrl="api/FileAction/Remove">
-                                            </UploaderAsyncSettings>
-                                        </SfUploader>
                                     </div>
                                 </div>
                             </div> <!--end of Trademark Information-->
-                            @if (claimConventionPriority)
-                            {
-                                <Modal @ref="modal" Title="Claim of Convention Priority" IsVerticallyCentered="true">
-                                    <BodyTemplate>
-                                        @foreach (var model in TrademarkModels)
-                                        {
-                                            <div class="row p-3">
-                                                <div class="row">
-                                                    <div class="form-floating m-2">
-                                                        <SfTextBox @bind-Value="@trademarkModel.claimConventionPriority.PriorForeignApplicationNo" Placeholder="Prior Foreign Application No." FloatLabelType="FloatLabelType.Auto"></SfTextBox>
-                                                        <ValidationMessage For="@(() => @trademarkModel.claimConventionPriority.PriorForeignApplicationNo)" />
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-floating m-2">
-                                                        <SfDatePicker @bind-Value="@trademarkModel.claimConventionPriority.DateValue" TValue="DateTime?" Placeholder="Foreign Filing Date"></SfDatePicker>
-                                                    </div>
-                                                </div>
-                                                <!--
-                                                    <div class="row">
-                                                    <div class="form-floating m-2">
-                                                        <SfDropDownList TValue="string" TItem="ResidenceDataModel" PopupHeight="auto" PopupWidth="auto" Placeholder="Country" DataSource="@CountryListData">
-                                                            <DropDownListFieldSettings Value="CountryId" Text="CountryName"></DropDownListFieldSettings>
-                                                        </SfDropDownList>
-                                                    </div>
-                                                </div>
-                                                -->
-                                            </div>
-                                        }
-                                        <div class="row p-3">
-                                            <SfButton CssClass="e-round" IconCss="e-icons e-plus-icon" IsPrimary="true" OnClick="AddNewGroup"></SfButton>
-                                        </div>
-                                    </BodyTemplate>
-                                    <FooterTemplate>
-                                        <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Close</Button>
-                                        <Button Color="ButtonColor.Primary">Submit</Button>
-                                    </FooterTemplate>
-                                </Modal>
-
-                            }
                         }
                     }
                     else if (goodsServices && selectedMarkType.HasValue && selectedMarkType != IPOPHLTrademark.Client.Shared.Enum.MarkType.None)
@@ -518,7 +544,7 @@
     <DialogTemplates>
         <Header>IPOPHL PRIVACY STATEMENT AS PER RA 10173 ALSO KNOWN AS "DATA PRIVACY ACT OF 2012"</Header>
         <Content>
-            <div class="text-wrap">
+            <div class="submit-preview-modal text-wrap">
                 By clicking the "I Agree" button", I understand that I am giving consent to the collection, storage, sharing and other necessary processing of the personal information contained in this application, freely and voluntarily, to the Intellectual Property Office of the Philippines (IPOPHL) and its partners, in the exercise of its mandate as the lead government agency for the protection of IP rights and in compliance with the provisions of RA 10173, also known as, the Data Privacy Act of 2012.
             </div>
             <div class="mt-5"></div>
@@ -531,7 +557,12 @@
                     <DialogTemplates>
                         <Header>IMPORTANT REMINDERS</Header>
                         <Content>
-                            
+                            <div class="submit-preview-modal text-wrap">
+                                Pursuant to Section 124.2 and Section 145 of R.A. 8293 and the Trademark Regulations:<br />
+                                1. The applicant or the registrant shall file DECLARATION OF ACTUAL USE (DAU) of the mark with evidence to that effect, as prescribed by the Regulations within three (3) years from the filing date of application. Otherwise, the application shall be REFUSED or the mark shall be REMOVED from the Register by the Director.<br />
+                                2. A certificate of registration shall remain in force for ten (10) years; provided, that the registrant shall file a DAU to that effect, or shall show valid reasons based on the existence of obstacles to such use, as prescribed by the Regulations, within one (1) year from the fifth (5th) anniversary of the date of registration, otherwise, the mark shall be REMOVED from the Register by the Office.<br />
+                                3. A Renewal DAU must be filed within one (1) year from the date of renewal of the registration, otherwise, the mark shall be removed from the Register.
+                           </div>
                             <div class="mt-5"></div>
                             <DialogFooter>
                                 <SfButton @onclick="@HandleValidSubmit">I understand</SfButton>
@@ -755,33 +786,7 @@
 }
 
 <!--for modal on claim of convention priority-->
-@code{
-    private bool claimConventionPriority { get; set; } = true;
 
-    private void ToggleConventionPriority(bool value)
-    {
-        claimConventionPriority = value;
-    }
-
-    private List<TrademarkModel> TrademarkModels { get; } = new List<TrademarkModel>();
-
-    private void AddNewGroup()
-    {
-        TrademarkModels.Add(new TrademarkModel());
-    }
-
-    private Modal modal = default!;
-
-    private async Task OnShowModalClick()
-    {
-        await modal.ShowAsync();
-    }
-
-    private async Task OnHideModalClick()
-    {
-        await modal.HideAsync();
-    }
-}
 
 <!--for type of applicant; able/disable-->
 @code{
